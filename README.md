@@ -1,1 +1,1 @@
-# eslint
+# @ast-grep/eslint
