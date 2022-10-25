@@ -22,6 +22,9 @@ valid:
   - class A extends (B || C) { constructor() { super() } }
   - class A extends (5 && B) { constructor() { super() } }
 
+  # Optional chaining
+  - class A extends obj?.prop { constructor() { super(); } }
+
   # A future improvement could detect the left side as statically falsy, making this invalid.
   - class A extends (false && B) { constructor() { super() } }
   - class A extends (B || 5) { constructor() { super() } }
@@ -48,6 +51,35 @@ valid:
 
   # https://github.com/eslint/eslint/issues/5261
   - class A extends B { constructor(a) { super(); for (const b of a) { this.a(); } } }
-
+  # https://github.com/eslint/eslint/issues/5319
+  - class Foo extends Object { constructor(method) { super(); this.method = method || function() {}; } }
+  # https://github.com/eslint/eslint/issues/5394
+  - |
+      class A extends Object {
+          constructor() {
+              super();
+              for (let i = 0; i < 0; i++);
+          }
+      }
+  # https://github.com/eslint/eslint/issues/8848
+  - |
+      class A extends B {
+        constructor(props) {
+            super(props);
+            try {
+                let arr = [];
+                for (let a of arr) {
+                }
+            } catch (err) {
+            }
+        }
+      }
 invalid:
   - class A extends B { constructor() { } }
+  - class A extends null { constructor() { } }
+  - class A extends B { constructor() { for (var a of b) super.foo(); } }
+  # nested execution scope. TODO
+  - class A extends B { constructor() { class C extends D { constructor() { super(); } } } }
+  - class A extends B { constructor() { var c = class extends D { constructor() { super(); } } } }
+  - class A extends B { constructor() { var c = () => super(); } }
+  - class A extends B { constructor() { super(); class C extends D { constructor() { } } } }
