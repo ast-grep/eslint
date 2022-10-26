@@ -83,3 +83,23 @@ invalid:
   - class A extends B { constructor() { var c = class extends D { constructor() { super(); } } } }
   - class A extends B { constructor() { var c = () => super(); } }
   - class A extends B { constructor() { super(); class C extends D { constructor() { } } } }
+  - |
+    class Foo extends Bar {
+      constructor() {
+        for (a in b) for (c in d);
+      }
+    }
+
+todoInvalid:
+  # inherit from non constructors
+  - class A extends null { constructor() { super(); } }
+  - class A extends 100 { constructor() { super(); } }
+  - class A extends 'test' { constructor() { super(); } }
+  # missing super in some code path
+  - class A extends B { constructor() { if (a) super(); } }
+  # duplicate super
+  - class A extends B { constructor() { super(); super(); } }
+  # missing + duplicate
+  - class A extends B { constructor(a) { while (a) super(); } }
+  # unrechable super
+  - class A extends B { constructor() { return; super(); } }
