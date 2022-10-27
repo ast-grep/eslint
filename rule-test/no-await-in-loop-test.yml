@@ -1,8 +1,51 @@
 id: no-await-in-loop
 valid:
   - for (let a of b) { console.log(a) }
+  - async function foo() { await bar; }
+  - async function foo() { for (var bar in await baz) { } }
+  - async function foo() { for (var bar of await baz) { } }
+  - async function foo() { for await (var bar of await baz) { } }
+  - async function foo() { for (var bar = await baz in qux) {} }
+  # While loops, Blocked by a function declaration
+  - async function foo() { while (true) { async function foo() { await bar; } } }
+  # Do while loops
+  - async function foo() { do { } while (bar); }
+  # Blocked by a function expression
+  - async function foo() { while (true) { var y = async function() { await bar; } } }
+  # Blocked by an arrow function
+  - async function foo() { while (true) { var y = async () => await foo; } }
+  - async function foo() { while (true) { var y = async () => { await foo; } } }
+  # Blocked by a class method
+  - async function foo() { while (true) { class Foo { async foo() { await bar; } } } }
 invalid:
-  - for (let a of b) { await a }
-  - for (var i = 1; i < 10; i++) { await arr[i] }
-  - do { await s } while(123)
-  - while (true) { await 123 }
+  # While loops
+  - async function foo() { while (baz) { await bar; } }
+  - async function foo() { while (await foo()) {  } }
+  # For of loops
+  - async function foo() { for (var bar of baz) { await bar; } }
+  - async function foo() { for (var bar of baz) await bar; }
+  # For in loops
+  - async function foo() { for (var bar in baz) { await bar; } }
+  # For loops
+  - async function foo() { for (var i; i < n; i++) { await bar; } }
+  - async function foo() { for (var i; await foo(i); i++) {  } }
+  - async function foo() { for (var i; i < n; i = await bar) {  } }
+
+  # Do while loops
+  - async function foo() { do { await bar; } while (baz); }
+  - async function foo() { do { } while (await bar); }
+
+  # Deep in a loop body
+  - async function foo() { while (true) { if (bar) { foo(await bar); } } }
+  # Deep in a loop condition
+  - async function foo() { while (xyz || 5 > await x) {  } }
+  # In a nested loop of for-await-of
+  - async function foo() { for await (var x of xs) { while (1) await f(x) } }
+
+todoValid:
+  # For loops
+  - async function foo() { for (var i = await bar; i < n; i++) {  } }
+  # Asynchronous iteration intentionally
+  - async function foo() { for await (var x of xs) { await f(x) } }
+todoInvalid:
+  - async function foo() { while (baz) { for await (x of xs); } }
