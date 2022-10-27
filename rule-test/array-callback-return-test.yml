@@ -1,0 +1,226 @@
+id: array-callback-return
+valid:
+  - foo.every(function(){}())
+  - foo.every(function(){ return function() { return true; }; }())
+  - foo.every(function(){ return function() { return; }; })
+  - foo.forEach(bar || function(x) { var a=0; })
+  - foo.forEach(bar || function(x) { return a; })
+  - foo.forEach(function() {return function() { var a = 0;}}())
+  - foo.forEach(function(x) { var a=0; })
+  - foo.forEach(function(x) { return a;})
+  - foo.forEach(function(x) { return; })
+  - foo.forEach(function(x) { if (a === b) { return;} var a=0; })
+  - foo.forEach(function(x) { if (a === b) { return x;} var a=0; })
+  - foo.bar().forEach(function(x) { return; })
+  - '["foo","bar","baz"].forEach(function(x) { return x; })'
+  - foo.forEach(x => { var a=0; })
+  - foo.forEach(x => { if (a === b) { return;} var a=0; })
+  - foo.forEach(x => x)
+  - foo.forEach(val => y += val)
+  - Array.from(x, function() { return true; })
+  - Int32Array.from(x, function() { return true; })
+  - foo.every(function() { return true; })
+  - foo.filter(function() { return true; })
+  - foo.find(function() { return true; })
+  - foo.findIndex(function() { return true; })
+  - foo.findLast(function() { return true; })
+  - foo.findLastIndex(function() { return true; })
+  - foo.flatMap(function() { return true; })
+  - foo.forEach(function() { return; })
+  - foo.map(function() { return true; })
+  - foo.reduce(function() { return true; })
+  - foo.reduceRight(function() { return true; })
+  - foo.some(function() { return true; })
+  - foo.sort(function() { return 0; })
+  - foo.every(() => { return true; })
+  - foo.every(function() { if (a) return true; else return false; })
+  - 'foo.every(function() { switch (a) { case 0: bar(); default: return true; } })'
+  - foo.every(function() { try { bar(); return true; } catch (err) { return false; } })
+  - foo.every(function() { try { bar(); } finally { return true; } })
+  - Array.from(x, function() { return; })
+  - Int32Array.from(x, function() { return; })
+  - foo.every(function() { return; })
+  - foo.filter(function() { return; })
+  - foo.find(function() { return; })
+  - foo.findIndex(function() { return; })
+  - foo.findLast(function() { return; })
+  - foo.findLastIndex(function() { return; })
+  - foo.flatMap(function() { return; })
+  - foo.forEach(function() { return; })
+  - foo.map(function() { return; })
+  - foo.reduce(function() { return; })
+  - foo.reduceRight(function() { return; })
+  - foo.some(function() { return; })
+  - foo.sort(function() { return; })
+  - foo.every(() => { return; })
+  - foo.every(function() { if (a) return; else return a; })
+  - 'foo.every(function() { switch (a) { case 0: bar(); default: return; } })'
+  - foo.every(function() { try { bar(); return; } catch (err) { return; } })
+  - foo.every(function() { try { bar(); } finally { return; } })
+  - foo.forEach(function(x) { return; })
+  - foo.forEach(function(x) { var a=0; })
+  - foo.forEach(function(x) { if (a === b) { return;} var a=0; })
+  - foo.forEach(function() {return function() { if (a == b) { return; }}}())
+  - foo.forEach(x => { var a=0; })
+  - foo.forEach(x => { if (a === b) { return;} var a=0; })
+  - foo.forEach(x => { x })
+  - foo.forEach(bar || function(x) { return; })
+  - Array.from(x, function() { return true; })
+  - Int32Array.from(x, function() { return true; })
+  - foo.every(() => { return true; })
+  - foo.every(function() { if (a) return 1; else return a; })
+  - 'foo.every(function() { switch (a) { case 0: return bar(); default: return a; } })'
+  - foo.every(function() { try { bar(); return 1; } catch (err) { return err; } })
+  - foo.every(function() { try { bar(); } finally { return 1; } })
+  - foo.every(function() { return; })
+  - Arrow.from(x, function() {})
+  - foo.abc(function() {})
+  - every(function() {})
+  - foo[every](function() {})
+  - var every = function() {}
+  - foo[`${every}`](function() {})
+  - foo.every(() => true)
+invalid:
+  - Array.from(x, function() {})
+  - Array.from(x, function foo() {})
+  - foo.every(function() {})
+  - foo.every(function foo() {})
+  - foo.filter(function() {})
+  - foo.filter(function foo() {})
+  - foo.find(function() {})
+  - foo.find(function foo() {})
+  - foo.findLast(function() {})
+  - foo.findLast(function foo() {})
+  - foo.findIndex(function() {})
+  - foo.findIndex(function foo() {})
+  - foo.findLastIndex(function() {})
+  - foo.findLastIndex(function foo() {})
+  - foo.flatMap(function() {})
+  - foo.flatMap(function foo() {})
+  - foo.map(function() {})
+  - foo.map(function foo() {})
+  - foo.reduce(function() {})
+  - foo.reduce(function foo() {})
+  - foo.reduceRight(function() {})
+  - foo.reduceRight(function foo() {})
+  - foo.some(function() {})
+  - foo.some(function foo() {})
+  - foo.sort(function() {})
+  - foo.sort(function foo() {})
+  - foo.bar.baz.every(function() {})
+  - foo.bar.baz.every(function foo() {})
+  - foo.every(() => {})
+  - foo.every(() => {})
+  - foo.every(() => {})
+  - Array.from(x, function() {})
+  - foo.every(function() {})
+  - foo.filter(function foo() {})
+  - foo.find(function foo() {})
+  - foo.map(function() {})
+  - foo.reduce(function() {})
+  - foo.reduceRight(function() {})
+  - foo.bar.baz.every(function foo() {})
+  - '["foo","bar"].sort(function foo() {})'
+  - Array.from(x, function() {})
+  - foo.every(function() {})
+  - foo.filter(function foo() {})
+  - foo.filter(bar => { baz(); } )
+  - |
+    foo.filter(
+    () => {} )
+  - Array.from(foo, bar => { bar })
+  - foo.filter(function(){})
+  - foo.filter(function (){})
+  - |
+    foo.filter(function
+    (){})
+  - foo.filter(function bar(){})
+  - foo.filter(function bar  (){})
+  - foo.filter(function
+    bar() {})
+  - Array.from(foo, function bar(){})
+  - |
+    foo.filter(function bar() { return
+    })
+
+todoValid:
+  # WTF the code below?
+  - foo.map(async function(){})
+  - foo.map(async () => {})
+  - foo.map(function* () {})
+
+todoInvalid:
+  # checkForEach
+  - |
+    foo.forEach(function () {
+      if (baz) return bar
+      else return
+    })
+  - foo.forEach(bar => bar)
+  - foo.forEach((function () { return (bar) => bar; })())
+  - foo.forEach((() => {  return bar => bar; })())
+  - foo.forEach((bar) => { if (bar) { return; } else { return bar ; } })
+  - foo.forEach(x => x)
+  - foo.forEach(function(x) { if (a == b) {return x;}})
+  - foo.forEach(function bar(x) { return x;})
+  - foo.forEach(x => x)
+  - foo.forEach(val => y += val)
+  - '["foo","bar"].forEach(x => ++x)'
+  - foo.bar().forEach(x => x === y)
+  - foo.forEach(function() {return function() { if (a == b) { return a; }}}())
+  - foo.forEach(function(x) { if (a == b) {return x;}})
+  - foo.forEach(function(x) { if (a == b) {return undefined;}})
+  - foo.forEach(function bar(x) { return x;})
+  - foo.forEach(function bar(x) { return x;})
+  - foo.bar().forEach(function bar(x) { return x;})
+  - "(foo?.filter)(() => { console.log('hello') })"
+  - '["foo","bar"].forEach(function bar(x) { return x;})'
+  - foo.forEach((x) => { return x;})
+
+  # outer control flow
+  - foo.every(cb || function() {})
+  - foo.every(cb || function foo() {})
+  - 'foo.every(a ? function() {} : function() {})'
+  - 'foo.every(a ? function foo() {} : function bar() {})'
+  - foo.filter(bar || ((baz) => {}) )
+
+  # inner control flow
+  - foo.every(function() { try { bar(); } catch (err) { return true; } })
+  - foo.every(function foo() { try { bar(); } catch (err) { return true; } })
+  - foo.every(function() { if (a) return true; })
+  - foo.every(function cb() { if (a) return true; })
+  - 'foo.every(function() { switch (a) { case 0: break; default: return true; } })'
+  - 'foo.every(function foo() { switch (a) { case 0: break; default: return true; } })'
+
+  # IIFE
+  - foo.every(function(){ return function() {}; }())
+  - foo.every(function(){ return function foo() {}; }())
+  - "foo?.filter((function() { return () => { console.log('hello') } })?.())"
+
+  # expression
+  - foo["every"](function() {})
+  - foo["every"](function foo() {})
+  - foo[`every`](function() {})
+  - foo[`every`](function foo() {})
+  - "(Array?.from)([], () => { console.log('hello') })"
+  - foo.every(cb || function() {})
+  - foo.every(cb || function() {})
+  - 'Array.from(foo, bar ? function (){} : baz)'
+
+  # return implicit
+  - foo.every(function() { return; })
+  - foo.every(function foo() { return; })
+  - foo.every(function() { if (a) return; })
+  - foo.every(function foo() { if (a) return; })
+  - foo.every(function() { if (a) return; else return; })
+  - foo.every(function foo() { if (a) return; else return; })
+  - foo.filter(function foo() { return; })
+  - foo.filter(bar => { return; })
+
+  # Int array
+  - Int32Array.from(x, function() {})
+  - Int32Array.from(x, function foo() {})
+
+  # optional?
+  - "foo?.filter(() => { console.log('hello') })"
+  - "Array?.from([], () => { console.log('hello') })"

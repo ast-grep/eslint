@@ -1,0 +1,39 @@
+id: array-callback-return
+message: return statements must be enforced in callbacks of array methods
+severity: warning
+language: TypeScript
+rule:
+  all:
+    - any:
+      - kind: function_declaration
+      - kind: arrow_function
+      - kind: function
+    - pattern: $FUNC
+    - not:
+        has:
+          pattern: return $C
+    - not:
+        all:
+          - pattern: $$$ => $R
+          - not:
+              pattern: $$$ => { $$$ }
+    - inside:
+        any:
+          - pattern: Array.from($, $FUNC)
+          - pattern: $A.every($FUNC)
+          - pattern: $A.every($FUNC)
+          - pattern: $A.filter($FUNC)
+          - pattern: $A.find($FUNC)
+          - pattern: $A.findIndex($FUNC)
+          - pattern: $A.findLast($FUNC)
+          - pattern: $A.findLastIndex($FUNC)
+          - pattern: $A.flatMap($FUNC)
+          - pattern: $A.map($FUNC)
+          - pattern: $A.reduce($FUNC)
+          - pattern: $A.reduceRight($FUNC)
+          - pattern: $A.some($FUNC)
+          - pattern: $A.sort($FUNC)
+note: |
+  Array has several methods for filtering, mapping, and folding.
+  If we forget to write return statement in a callback of those, it’s probably a mistake.
+  If you don’t want to use a return or don’t need the returned results, consider using .forEach instead.
