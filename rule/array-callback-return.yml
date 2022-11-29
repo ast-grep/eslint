@@ -21,7 +21,6 @@ rule:
         any:
           - pattern: Array.from($, $FUNC)
           - pattern: $A.every($FUNC)
-          - pattern: $A.every($FUNC)
           - pattern: $A.filter($FUNC)
           - pattern: $A.find($FUNC)
           - pattern: $A.findIndex($FUNC)
