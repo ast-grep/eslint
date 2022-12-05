@@ -1,0 +1,132 @@
+id: no-await-in-loop
+snapshots:
+  async function foo() { for (var bar of baz) { await bar; } }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 46
+      end: 55
+    - source: for (var bar of baz) { await bar; }
+      style: Secondary
+      start: 23
+      end: 58
+  async function foo() { for (var i; await foo(i); i++) {  } }:
+    labels:
+    - source: await foo(i)
+      style: Primary
+      start: 35
+      end: 47
+    - source: for (var i; await foo(i); i++) {  }
+      style: Secondary
+      start: 23
+      end: 58
+  async function foo() { for (var bar of baz) await bar; }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 44
+      end: 53
+    - source: for (var bar of baz) await bar;
+      style: Secondary
+      start: 23
+      end: 54
+  async function foo() { for (var i; i < n; i = await bar) {  } }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 46
+      end: 55
+    - source: for (var i; i < n; i = await bar) {  }
+      style: Secondary
+      start: 23
+      end: 61
+  async function foo() { while (true) { if (bar) { foo(await bar); } } }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 53
+      end: 62
+    - source: while (true) { if (bar) { foo(await bar); } }
+      style: Secondary
+      start: 23
+      end: 68
+  async function foo() { for await (var x of xs) { while (1) await f(x) } }:
+    labels:
+    - source: await f(x)
+      style: Primary
+      start: 59
+      end: 69
+    - source: while (1) await f(x)
+      style: Secondary
+      start: 49
+      end: 69
+  async function foo() { for (var bar in baz) { await bar; } }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 46
+      end: 55
+    - source: for (var bar in baz) { await bar; }
+      style: Secondary
+      start: 23
+      end: 58
+  async function foo() { do { } while (await bar); }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 37
+      end: 46
+    - source: do { } while (await bar);
+      style: Secondary
+      start: 23
+      end: 48
+  async function foo() { while (await foo()) {  } }:
+    labels:
+    - source: await foo()
+      style: Primary
+      start: 30
+      end: 41
+    - source: while (await foo()) {  }
+      style: Secondary
+      start: 23
+      end: 47
+  async function foo() { while (baz) { await bar; } }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 37
+      end: 46
+    - source: while (baz) { await bar; }
+      style: Secondary
+      start: 23
+      end: 49
+  async function foo() { for (var i; i < n; i++) { await bar; } }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 49
+      end: 58
+    - source: for (var i; i < n; i++) { await bar; }
+      style: Secondary
+      start: 23
+      end: 61
+  async function foo() { do { await bar; } while (baz); }:
+    labels:
+    - source: await bar
+      style: Primary
+      start: 28
+      end: 37
+    - source: do { await bar; } while (baz);
+      style: Secondary
+      start: 23
+      end: 53
+  async function foo() { while (xyz || 5 > await x) {  } }:
+    labels:
+    - source: await x
+      style: Primary
+      start: 41
+      end: 48
+    - source: while (xyz || 5 > await x) {  }
+      style: Secondary
+      start: 23
+      end: 54

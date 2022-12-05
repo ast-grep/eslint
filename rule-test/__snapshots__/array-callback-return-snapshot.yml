@@ -1,0 +1,428 @@
+id: array-callback-return
+snapshots:
+  foo.findLastIndex(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 18
+      end: 35
+    - source: foo.findLastIndex(function foo() {})
+      style: Secondary
+      start: 0
+      end: 36
+  foo.reduce(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 11
+      end: 24
+    - source: foo.reduce(function() {})
+      style: Secondary
+      start: 0
+      end: 25
+  Array.from(x, function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 14
+      end: 27
+    - source: Array.from(x, function() {})
+      style: Secondary
+      start: 0
+      end: 28
+  foo.sort(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 9
+      end: 26
+    - source: foo.sort(function foo() {})
+      style: Secondary
+      start: 0
+      end: 27
+  foo.reduce(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 11
+      end: 28
+    - source: foo.reduce(function foo() {})
+      style: Secondary
+      start: 0
+      end: 29
+  foo.flatMap(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 12
+      end: 29
+    - source: foo.flatMap(function foo() {})
+      style: Secondary
+      start: 0
+      end: 30
+  foo.filter(function bar(){}):
+    labels:
+    - source: function bar(){}
+      style: Primary
+      start: 11
+      end: 27
+    - source: foo.filter(function bar(){})
+      style: Secondary
+      start: 0
+      end: 28
+  foo.map(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 8
+      end: 25
+    - source: foo.map(function foo() {})
+      style: Secondary
+      start: 0
+      end: 26
+  foo.every(() => {}):
+    labels:
+    - source: () => {}
+      style: Primary
+      start: 10
+      end: 18
+    - source: foo.every(() => {})
+      style: Secondary
+      start: 0
+      end: 19
+  foo.findLast(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 13
+      end: 30
+    - source: foo.findLast(function foo() {})
+      style: Secondary
+      start: 0
+      end: 31
+  Array.from(foo, bar => { bar }):
+    labels:
+    - source: bar => { bar }
+      style: Primary
+      start: 16
+      end: 30
+    - source: Array.from(foo, bar => { bar })
+      style: Secondary
+      start: 0
+      end: 31
+  foo.some(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 9
+      end: 26
+    - source: foo.some(function foo() {})
+      style: Secondary
+      start: 0
+      end: 27
+  ? |
+    foo.filter(function
+    (){})
+  : labels:
+    - source: |-
+        function
+        (){}
+      style: Primary
+      start: 11
+      end: 24
+    - source: |-
+        foo.filter(function
+        (){})
+      style: Secondary
+      start: 0
+      end: 25
+  foo.findLastIndex(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 18
+      end: 31
+    - source: foo.findLastIndex(function() {})
+      style: Secondary
+      start: 0
+      end: 32
+  foo.filter(function bar  (){}):
+    labels:
+    - source: function bar  (){}
+      style: Primary
+      start: 11
+      end: 29
+    - source: foo.filter(function bar  (){})
+      style: Secondary
+      start: 0
+      end: 30
+  foo.flatMap(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 12
+      end: 25
+    - source: foo.flatMap(function() {})
+      style: Secondary
+      start: 0
+      end: 26
+  foo.filter(bar => { baz(); } ):
+    labels:
+    - source: bar => { baz(); }
+      style: Primary
+      start: 11
+      end: 28
+    - source: foo.filter(bar => { baz(); } )
+      style: Secondary
+      start: 0
+      end: 30
+  foo.bar.baz.every(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 18
+      end: 31
+    - source: foo.bar.baz.every(function() {})
+      style: Secondary
+      start: 0
+      end: 32
+  ? |
+    foo.filter(function bar() { return
+    })
+  : labels:
+    - source: |-
+        function bar() { return
+        }
+      style: Primary
+      start: 11
+      end: 36
+    - source: |-
+        foo.filter(function bar() { return
+        })
+      style: Secondary
+      start: 0
+      end: 37
+  foo.some(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 9
+      end: 22
+    - source: foo.some(function() {})
+      style: Secondary
+      start: 0
+      end: 23
+  foo.find(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 9
+      end: 26
+    - source: foo.find(function foo() {})
+      style: Secondary
+      start: 0
+      end: 27
+  foo.every(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 10
+      end: 23
+    - source: foo.every(function() {})
+      style: Secondary
+      start: 0
+      end: 24
+  foo.findIndex(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 14
+      end: 27
+    - source: foo.findIndex(function() {})
+      style: Secondary
+      start: 0
+      end: 28
+  foo.filter(function(){}):
+    labels:
+    - source: function(){}
+      style: Primary
+      start: 11
+      end: 23
+    - source: foo.filter(function(){})
+      style: Secondary
+      start: 0
+      end: 24
+  Array.from(foo, function bar(){}):
+    labels:
+    - source: function bar(){}
+      style: Primary
+      start: 16
+      end: 32
+    - source: Array.from(foo, function bar(){})
+      style: Secondary
+      start: 0
+      end: 33
+  Array.from(x, function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 14
+      end: 31
+    - source: Array.from(x, function foo() {})
+      style: Secondary
+      start: 0
+      end: 32
+  foo.findLast(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 13
+      end: 26
+    - source: foo.findLast(function() {})
+      style: Secondary
+      start: 0
+      end: 27
+  foo.filter(function bar() {}):
+    labels:
+    - source: function bar() {}
+      style: Primary
+      start: 11
+      end: 28
+    - source: foo.filter(function bar() {})
+      style: Secondary
+      start: 0
+      end: 29
+  '["foo","bar"].sort(function foo() {})':
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 19
+      end: 36
+    - source: '["foo","bar"].sort(function foo() {})'
+      style: Secondary
+      start: 0
+      end: 37
+  foo.filter(function (){}):
+    labels:
+    - source: function (){}
+      style: Primary
+      start: 11
+      end: 24
+    - source: foo.filter(function (){})
+      style: Secondary
+      start: 0
+      end: 25
+  foo.sort(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 9
+      end: 22
+    - source: foo.sort(function() {})
+      style: Secondary
+      start: 0
+      end: 23
+  foo.map(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 8
+      end: 21
+    - source: foo.map(function() {})
+      style: Secondary
+      start: 0
+      end: 22
+  foo.filter(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 11
+      end: 28
+    - source: foo.filter(function foo() {})
+      style: Secondary
+      start: 0
+      end: 29
+  foo.find(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 9
+      end: 22
+    - source: foo.find(function() {})
+      style: Secondary
+      start: 0
+      end: 23
+  foo.findIndex(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 14
+      end: 31
+    - source: foo.findIndex(function foo() {})
+      style: Secondary
+      start: 0
+      end: 32
+  foo.reduceRight(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 16
+      end: 29
+    - source: foo.reduceRight(function() {})
+      style: Secondary
+      start: 0
+      end: 30
+  foo.every(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 10
+      end: 27
+    - source: foo.every(function foo() {})
+      style: Secondary
+      start: 0
+      end: 28
+  foo.reduceRight(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 16
+      end: 33
+    - source: foo.reduceRight(function foo() {})
+      style: Secondary
+      start: 0
+      end: 34
+  foo.bar.baz.every(function foo() {}):
+    labels:
+    - source: function foo() {}
+      style: Primary
+      start: 18
+      end: 35
+    - source: foo.bar.baz.every(function foo() {})
+      style: Secondary
+      start: 0
+      end: 36
+  foo.filter(function() {}):
+    labels:
+    - source: function() {}
+      style: Primary
+      start: 11
+      end: 24
+    - source: foo.filter(function() {})
+      style: Secondary
+      start: 0
+      end: 25
+  ? |
+    foo.filter(
+    () => {} )
+  : labels:
+    - source: () => {}
+      style: Primary
+      start: 12
+      end: 20
+    - source: |-
+        foo.filter(
+        () => {} )
+      style: Secondary
+      start: 0
+      end: 22

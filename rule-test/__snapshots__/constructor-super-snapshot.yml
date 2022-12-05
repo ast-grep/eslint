@@ -1,0 +1,95 @@
+id: constructor-super
+snapshots:
+  class A extends B { constructor() { super(); class C extends D { constructor() { } } } }:
+    labels:
+    - source: constructor() { }
+      style: Primary
+      start: 65
+      end: 82
+    - source: class C extends D { constructor() { } }
+      style: Secondary
+      start: 45
+      end: 84
+  ? |
+    class Foo extends Bar {
+      constructor() {
+        for (a in b) for (c in d);
+      }
+    }
+  : labels:
+    - source: |-
+        constructor() {
+            for (a in b) for (c in d);
+          }
+      style: Primary
+      start: 26
+      end: 76
+    - source: |-
+        class Foo extends Bar {
+          constructor() {
+            for (a in b) for (c in d);
+          }
+        }
+      style: Secondary
+      start: 0
+      end: 78
+  class A extends B { constructor() { class C extends D { constructor() { super(); } } } }:
+    labels:
+    - source: constructor() { class C extends D { constructor() { super(); } } }
+      style: Primary
+      start: 20
+      end: 86
+    - source: class A extends B { constructor() { class C extends D { constructor() { super(); } } } }
+      style: Secondary
+      start: 0
+      end: 88
+  class A extends B { constructor() { var c = () => super(); } }:
+    labels:
+    - source: constructor() { var c = () => super(); }
+      style: Primary
+      start: 20
+      end: 60
+    - source: class A extends B { constructor() { var c = () => super(); } }
+      style: Secondary
+      start: 0
+      end: 62
+  class A extends B { constructor() { var c = class extends D { constructor() { super(); } } } }:
+    labels:
+    - source: constructor() { var c = class extends D { constructor() { super(); } } }
+      style: Primary
+      start: 20
+      end: 92
+    - source: class A extends B { constructor() { var c = class extends D { constructor() { super(); } } } }
+      style: Secondary
+      start: 0
+      end: 94
+  class A extends B { constructor() { } }:
+    labels:
+    - source: constructor() { }
+      style: Primary
+      start: 20
+      end: 37
+    - source: class A extends B { constructor() { } }
+      style: Secondary
+      start: 0
+      end: 39
+  class A extends null { constructor() { } }:
+    labels:
+    - source: constructor() { }
+      style: Primary
+      start: 23
+      end: 40
+    - source: class A extends null { constructor() { } }
+      style: Secondary
+      start: 0
+      end: 42
+  class A extends B { constructor() { for (var a of b) super.foo(); } }:
+    labels:
+    - source: constructor() { for (var a of b) super.foo(); }
+      style: Primary
+      start: 20
+      end: 67
+    - source: class A extends B { constructor() { for (var a of b) super.foo(); } }
+      style: Secondary
+      start: 0
+      end: 69
