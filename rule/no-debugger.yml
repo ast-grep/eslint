@@ -1,0 +1,8 @@
+id: no-debugger
+message: Unexpected `debugger` statement.
+severity: warning
+language: TypeScript
+rule:
+  pattern: debugger
+note: |
+  Production code should definitely not contain debugger, as it will cause the browser to stop executing code and open an appropriate debugger.

@@ -1,0 +1,5 @@
+id: no-debugger
+valid:
+  - console.log(123)
+invalid:
+  - debugger

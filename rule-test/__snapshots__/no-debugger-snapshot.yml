@@ -1,0 +1,8 @@
+id: no-debugger
+snapshots:
+  debugger:
+    labels:
+    - source: debugger
+      style: Primary
+      start: 0
+      end: 8
