@@ -20,18 +20,11 @@ rule:
     - inside:
         any:
           - pattern: Array.from($, $FUNC)
-          - pattern: $A.every($FUNC)
-          - pattern: $A.filter($FUNC)
-          - pattern: $A.find($FUNC)
-          - pattern: $A.findIndex($FUNC)
-          - pattern: $A.findLast($FUNC)
-          - pattern: $A.findLastIndex($FUNC)
-          - pattern: $A.flatMap($FUNC)
-          - pattern: $A.map($FUNC)
-          - pattern: $A.reduce($FUNC)
-          - pattern: $A.reduceRight($FUNC)
-          - pattern: $A.some($FUNC)
-          - pattern: $A.sort($FUNC)
+          - pattern: $A.$METHOD($FUNC)
+constraints:
+  METHOD:
+    regex: ^(every|filter|find|findIndex|findLast|findLastIndex|flatMap|map|reduce|reduceRight|some|sort)$
+
 note: |
   Array has several methods for filtering, mapping, and folding.
   If we forget to write return statement in a callback of those, it’s probably a mistake.
