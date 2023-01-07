@@ -58,6 +58,7 @@ let { modelValue, title } = bar<{
 }>()
 
 function bar<T>(thing?: T): T {
+  debugger
   throw new Error("Function not implemented.");
 }
 
