@@ -3,27 +3,73 @@ message: Enforce `return` statements in getters
 severity: warning
 language: TypeScript
 rule:
-  all:
-    - pattern: await $_
-    - inside:
-        until:
-          any:
-            - kind: function_declaration
-            - kind: arrow_function
-            - kind: function
-            - kind: method_definition
-        any:
-          - kind: for_in_statement
-          - kind: for_statement
-          - kind: while_statement
-          - kind: do_statement
-    - not:
-        inside:
-          immediate: true
-          any:
-            - kind: for_in_statement
-            - kind: for_statement
-            - kind: while_statement
-            - kind: do_statement
+  any:
+    - all:
+      - pattern:
+          context: '{ get $A() $$$ { $$$ } }'
+          selector: method_definition
+      - not:
+          has:
+            pattern: return $
+            until:
+              any:
+                - kind: if_statement
+                - kind: function
+    - all:
+      - any:
+          - all:
+            - kind: pair
+            - has:
+                all:
+                  - any:
+                      - kind: function
+                      - kind: arrow_function
+                  - not:
+                      has:
+                        pattern: return $_
+                        until:
+                          any:
+                            - kind: if_statement
+                            - kind: function
+          - all:
+              - kind: method_definition
+              - not:
+                  has:
+                    pattern: return $
+                    until:
+                      any:
+                        - kind: if_statement
+                        - kind: function
+      - has:
+          all:
+            - kind: property_identifier
+            - pattern: $KEY
+      - inside:
+          all:
+            - kind: object
+            - pattern: $OBJECT
+            - inside:
+                any:
+                  - pattern: Object.defineProperty($_, $_, $OBJECT)
+                  - pattern: Reflect.defineProperty($_, $_, $OBJECT)
+                  - pattern: Object?.defineProperty($_, $_, $OBJECT)
+                  - pattern: Reflect?.defineProperty($_, $_, $OBJECT)
+                  - pattern: Object.create($$$)
+      - inside:
+          all:
+            - kind: object
+            - pattern: $OBJECT
+            - inside:
+                any:
+                  - pattern: Object.defineProperty($_, $_, $OBJECT)
+                  - pattern: Reflect.defineProperty($_, $_, $OBJECT)
+                  - pattern: Object?.defineProperty($_, $_, $OBJECT)
+                  - pattern: Reflect?.defineProperty($_, $_, $OBJECT)
+                  - pattern: Object.create($$$)
+constraints:
+  METHOD:
+    regex: ^get\s
+  KEY:
+    regex: ^get$
 note: |
   The get syntax binds an object property to a function that will be called when that property is looked up. Every getter is expected to return a value.
