@@ -3,6 +3,6 @@ snapshots:
   debugger:
     labels:
     - source: debugger
-      style: Primary
+      style: primary
       start: 0
       end: 8
