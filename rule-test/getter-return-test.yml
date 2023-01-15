@@ -1,0 +1,45 @@
+id: getter-return
+valid:
+  - "var foo = { get bar(){return true;} };"
+  # allowImplicit: true
+  # - "var foo = { get bar() {return;} };"
+  # - "var foo = { get bar(){return true;} };"
+  # - "var foo = { get bar(){if(bar) {return;} return true;} };"
+  # allowImplicit: false
+  - "class foo { get bar(){return true;} }"
+  - "class foo { get bar(){if(baz){return true;} else {return false;} } }"
+  - "class foo { get(){return true;} }"
+  # option: {allowImplicit: true}
+  - "class foo { get bar(){return true;} }"
+  - "class foo { get bar(){return;} }"
+  # defineProperty
+  - "Object.defineProperty(foo, \"bar\", { get: function () {return true;}});"
+  - "Object.defineProperty(foo, \"bar\", { get: function () { ~function (){ return true; }();return true;}});"
+  - "Object.defineProperties(foo, { bar: { get: function () {return true;}} });"
+  - "Object.defineProperties(foo, { bar: { get: function () { ~function (){ return true; }(); return true;}} });"
+  - "Reflect.defineProperty(foo, \"bar\", { get: function () {return true;}});"
+  - "Reflect.defineProperty(foo, \"bar\", { get: function () { ~function (){ return true; }();return true;}});"
+  # object.create(s)
+  - "Object.create(foo, { bar: { get() {return true;} } });"
+  - "Object.create(foo, { bar: { get: function () {return true;} } });"
+  - "Object.create(foo, { bar: { get: () => {return true;} } });"
+  # option: {allowImplicit: true}
+  - "Object.defineProperty(foo, \"bar\", { get: function () {return true;}});"
+  - "Object.defineProperty(foo, \"bar\", { get: function (){return;}});"
+  - "Object.defineProperties(foo, { bar: { get: function () {return true;}} });"
+  - "Object.defineProperties(foo, { bar: { get: function () {return;}} });"
+  - "Reflect.defineProperty(foo, \"bar\", { get: function () {return true;}});"
+  # not getter.
+  - "var get = function(){};"
+  - "var get = function(){ return true; };"
+  - "var foo = { bar(){} };"
+  - "var foo = { bar(){ return true; } };"
+  - "var foo = { bar: function(){} };"
+  - "var foo = { bar: function(){return;} };"
+  - "var foo = { bar: function(){return true;} };"
+  - "var foo = { get: function () {} }"
+  - "var foo = { get: () => {}};"
+  - "class C { get; foo() {} }"
+  - "foo.defineProperty(null, { get() {} });"
+  - "foo.defineProperties(null, { bar: { get() {} } });"
+  - "foo.create(null, { bar: { get() {} } });"
