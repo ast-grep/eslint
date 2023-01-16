@@ -8,9 +8,7 @@ rule:
     - any:
         - kind: function
         - kind: arrow_function
-    - regex: ^async\s
+    - regex: ^async
     - inside:
-        pattern: new Promise($$$)
-        until:
-          kind: arguments
+        pattern: new Promise($A)
 note: Disallow using an async function as a Promise executor
