@@ -84,6 +84,32 @@ snapshots:
       style: secondary
       start: 26
       end: 48
+  'Object.defineProperties(foo, { bar: { get: function () {}} });':
+    labels:
+    - source: 'get: function () {}'
+      style: primary
+      start: 38
+      end: 57
+    - source: function () {}
+      style: secondary
+      start: 43
+      end: 57
+    - source: get
+      style: secondary
+      start: 38
+      end: 41
+    - source: 'Object.defineProperties(foo, { bar: { get: function () {}} })'
+      style: secondary
+      start: 0
+      end: 61
+    - source: '{ bar: { get: function () {}} }'
+      style: secondary
+      start: 29
+      end: 60
+    - source: '{ get: function () {}}'
+      style: secondary
+      start: 36
+      end: 58
   'Object.defineProperty(foo, "bar", { get: function (){ ~function () { return true; }()}});':
     labels:
     - source: 'get: function (){ ~function () { return true; }()}'

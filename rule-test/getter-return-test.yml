@@ -3,8 +3,8 @@ valid:
   - "var foo = { get bar(){return true;} };"
   - "var foo = { get bar(): boolean {return true;} };"
   # allowImplicit: true
-  # - "var foo = { get bar() {return;} };"
-  # - "var foo = { get bar(){return true;} };"
+  - "var foo = { get bar() {return;} };"
+  - "var foo = { get bar(){return true;} };"
   # - "var foo = { get bar(){if(bar) {return;} return true;} };"
   # allowImplicit: false
   - "class foo { get bar(){return true;} }"
@@ -69,7 +69,7 @@ invalid:
   - "Object.create(foo, { bar: { get: function() {} } })"
   - "Object.create(foo, { bar: { get() {} } })"
   - "Object.create(foo, { bar: { get: () => {} } })"
-  # - "Object.defineProperties(foo, { bar: { get: function () {}} });"
+  - "Object.defineProperties(foo, { bar: { get: function () {}} });"
   # - "Object.defineProperties(foo, { bar: { get: function (){if(bar) {return true;}}}});"
   # - "Object.defineProperties(foo, { bar: { get: function () {~function () { return true; }()}} });"
   - "Object.defineProperty(foo, \"bar\", { get: function (){}});"

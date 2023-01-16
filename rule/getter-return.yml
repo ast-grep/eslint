@@ -54,5 +54,11 @@ rule:
                   - pattern: Object?.defineProperty($_, $_, $OBJECT)
                   - pattern: Reflect?.defineProperty($_, $_, $OBJECT)
                   - pattern: Object.create($$$)
+                  - all:
+                    - kind: object
+                    - pattern: $CONTAINER
+                    - inside:
+                        pattern: Object.defineProperties($_, $CONTAINER)
+
 note: |
   The get syntax binds an object property to a function that will be called when that property is looked up. Every getter is expected to return a value.
