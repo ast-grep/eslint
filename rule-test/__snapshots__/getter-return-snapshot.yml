@@ -110,6 +110,58 @@ snapshots:
       style: secondary
       start: 36
       end: 58
+  'Object.defineProperties(foo, { bar: { get: function () {~function () { return true; }()}} });':
+    labels:
+    - source: 'get: function () {~function () { return true; }()}'
+      style: primary
+      start: 38
+      end: 88
+    - source: function () {~function () { return true; }()}
+      style: secondary
+      start: 43
+      end: 88
+    - source: get
+      style: secondary
+      start: 38
+      end: 41
+    - source: 'Object.defineProperties(foo, { bar: { get: function () {~function () { return true; }()}} })'
+      style: secondary
+      start: 0
+      end: 92
+    - source: '{ bar: { get: function () {~function () { return true; }()}} }'
+      style: secondary
+      start: 29
+      end: 91
+    - source: '{ get: function () {~function () { return true; }()}}'
+      style: secondary
+      start: 36
+      end: 89
+  'Object.defineProperties(foo, { bar: { get: function (){if(bar) {return true;}}}});':
+    labels:
+    - source: 'get: function (){if(bar) {return true;}}'
+      style: primary
+      start: 38
+      end: 78
+    - source: function (){if(bar) {return true;}}
+      style: secondary
+      start: 43
+      end: 78
+    - source: get
+      style: secondary
+      start: 38
+      end: 41
+    - source: 'Object.defineProperties(foo, { bar: { get: function (){if(bar) {return true;}}}})'
+      style: secondary
+      start: 0
+      end: 81
+    - source: '{ bar: { get: function (){if(bar) {return true;}}}}'
+      style: secondary
+      start: 29
+      end: 80
+    - source: '{ get: function (){if(bar) {return true;}}}'
+      style: secondary
+      start: 36
+      end: 79
   'Object.defineProperty(foo, "bar", { get: function (){ ~function () { return true; }()}});':
     labels:
     - source: 'get: function (){ ~function () { return true; }()}'
