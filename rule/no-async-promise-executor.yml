@@ -1,0 +1,16 @@
+id: no-async-promise-executor
+message: Promise executor functions should not be async.
+severity: warning
+language: TypeScript
+rule:
+  all:
+    - pattern: $A
+    - any:
+        - kind: function
+        - kind: arrow_function
+    - regex: ^async\s
+    - inside:
+        pattern: new Promise($$$)
+        until:
+          kind: arguments
+note: Disallow using an async function as a Promise executor
