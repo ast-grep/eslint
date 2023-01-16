@@ -5,9 +5,8 @@ language: TypeScript
 rule:
   any:
     - all:
-      - pattern:
-          context: '{ get $A() $$$ { $$$ } }'
-          selector: method_definition
+      - kind: method_definition
+      - regex: ^get\s
       - not:
           has:
             pattern: return $
@@ -17,20 +16,19 @@ rule:
                 - kind: function
     - all:
       - any:
-          - all:
-            - kind: pair
-            - has:
-                all:
-                  - any:
-                      - kind: function
-                      - kind: arrow_function
-                  - not:
-                      has:
-                        pattern: return $_
-                        until:
-                          any:
-                            - kind: if_statement
-                            - kind: function
+          - kind: pair
+            has:
+              all:
+                - any:
+                    - kind: function
+                    - kind: arrow_function
+                - not:
+                    has:
+                      pattern: return $_
+                      until:
+                        any:
+                          - kind: if_statement
+                          - kind: function
           - all:
               - kind: method_definition
               - not:
@@ -41,9 +39,10 @@ rule:
                         - kind: if_statement
                         - kind: function
       - has:
+          immediate: true
           all:
             - kind: property_identifier
-            - pattern: $KEY
+            - regex: ^get$
       - inside:
           all:
             - kind: object
@@ -55,21 +54,5 @@ rule:
                   - pattern: Object?.defineProperty($_, $_, $OBJECT)
                   - pattern: Reflect?.defineProperty($_, $_, $OBJECT)
                   - pattern: Object.create($$$)
-      - inside:
-          all:
-            - kind: object
-            - pattern: $OBJECT
-            - inside:
-                any:
-                  - pattern: Object.defineProperty($_, $_, $OBJECT)
-                  - pattern: Reflect.defineProperty($_, $_, $OBJECT)
-                  - pattern: Object?.defineProperty($_, $_, $OBJECT)
-                  - pattern: Reflect?.defineProperty($_, $_, $OBJECT)
-                  - pattern: Object.create($$$)
-constraints:
-  METHOD:
-    regex: ^get\s
-  KEY:
-    regex: ^get$
 note: |
   The get syntax binds an object property to a function that will be called when that property is looked up. Every getter is expected to return a value.
