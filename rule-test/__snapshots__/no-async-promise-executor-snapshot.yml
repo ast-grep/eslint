@@ -1,0 +1,22 @@
+id: no-async-promise-executor
+snapshots:
+  new Promise(async (resolve, reject) => {}):
+    labels:
+    - source: async (resolve, reject) => {}
+      style: primary
+      start: 12
+      end: 41
+    - source: new Promise(async (resolve, reject) => {})
+      style: secondary
+      start: 0
+      end: 42
+  new Promise(async function foo(resolve, reject) {}):
+    labels:
+    - source: async function foo(resolve, reject) {}
+      style: primary
+      start: 12
+      end: 50
+    - source: new Promise(async function foo(resolve, reject) {})
+      style: secondary
+      start: 0
+      end: 51

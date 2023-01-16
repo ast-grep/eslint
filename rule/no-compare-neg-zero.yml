@@ -1,0 +1,15 @@
+id: no-compare-neg-zero
+message: Disallow comparing against -0
+severity: warning
+language: TypeScript
+rule:
+  all:
+    - kind: binary_expression
+    - has:
+        immediate: true
+        regex: ^-\s*0$
+    - has:
+        immediate: true
+        regex: "^(>|>=|<|<=|==|===|!=|!==)$"
+note: |
+  Do not use operator to compare -0. `Object.is` should probably be a better alternative.
