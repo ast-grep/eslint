@@ -1,0 +1,30 @@
+id: no-constructor-return
+message: Unexpected return statement in constructor.
+severity: warning
+language: TypeScript
+rule:
+  any:
+    - kind: return_statement
+      regex: "^return\\s*;?$"
+      inside:
+        until:
+          not:
+            kind: statement_block
+        kind: method_definition
+        has:
+          immediate: true
+          kind: property_identifier
+          regex: constructor
+    - pattern: return $A
+      inside:
+        until:
+          any:
+            - kind: function_declaration
+            - kind: arrow_function
+            - kind: function
+        has:
+          immediate: true
+          kind: property_identifier
+          regex: constructor
+note: |
+  In JavaScript, returning a value in the constructor of a class may be a mistake. Forbidding this pattern prevents mistakes resulting from unfamiliarity with the language or a copy-paste error.

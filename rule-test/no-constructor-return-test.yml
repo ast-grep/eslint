@@ -1,0 +1,23 @@
+id: no-constructor-return
+valid:
+  - "function fn() { return }"
+  - "function fn(kumiko) { if (kumiko) { return kumiko } }"
+  - "const fn = function () { return }"
+  - "const fn = function () { if (kumiko) { return kumiko } }"
+  - "const fn = () => { return }"
+  - "const fn = () => { if (kumiko) { return kumiko } }"
+  - "return 'Kumiko Oumae'"
+  - "class C {  }"
+  - "class C { constructor() {} }"
+  - "class C { constructor() { let v } }"
+  - "class C { method() { return '' } }"
+  - "class C { get value() { return '' } }"
+  - "class C { constructor(a) { if (!a) { return } else { a() } } }"
+  - "class C { constructor() { function fn() { return true } } }"
+  - "class C { constructor() { this.fn = function () { return true } } }"
+  - "class C { constructor() { this.fn = () => { return true } } }"
+invalid:
+  - "class C { constructor() { return } }"
+  - "class C { constructor() { return '' } }"
+  - "class C { constructor(a) { if (!a) { return '' } else { a() } } }"
+  - "class C { constructor() { return ;} }"
