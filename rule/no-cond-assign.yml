@@ -9,28 +9,30 @@ rule:
       - kind: augmented_assignment_expression
     - any:
       - inside:
-          immediate: true
+          stopBy: neighbor
           kind: parenthesized_expression
           inside:
-            until:
-              not:
-                any:
-                  - kind: binary_expression
-                  - kind: while_statement
-                  - kind: do_statement
-                  - kind: if_statement
-                  - kind: expression_statement
+            stopBy:
+              rule:
+                not:
+                  any:
+                    - kind: binary_expression
+                    - kind: while_statement
+                    - kind: do_statement
+                    - kind: if_statement
+                    - kind: expression_statement
             any:
               - kind: while_statement
               - kind: do_statement
               - kind: if_statement
       - inside:
-          until:
-            not:
-              any:
-                - kind: binary_expression
-                - kind: expression_statement
-                - kind: for_statement
+          stopBy:
+            rule:
+              not:
+                any:
+                  - kind: binary_expression
+                  - kind: expression_statement
+                  - kind: for_statement
           kind: for_statement
 note: |
   In conditional statements, it is very easy to mistype a comparison operator (such as ==) as an assignment operator (such as =). It can be difficult to tell whether a specific assignment was intentional.

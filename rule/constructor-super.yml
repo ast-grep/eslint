@@ -11,11 +11,12 @@ rule:
         pattern: class $CLASS extends $BASE { $$$ }
     - not:
         has:
-          until:
-            any:
-              - kind: class_declaration
-              - kind: class
-              - kind: arrow_function
+          stopBy:
+            rule:
+              any:
+                - kind: class_declaration
+                - kind: class
+                - kind: arrow_function
           pattern: super($$$)
 note: |
   Constructors of derived classes must call super(). Constructors of non derived classes must not call super(). If this is not observed, the JavaScript engine will raise a runtime error.

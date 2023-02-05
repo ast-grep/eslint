@@ -7,23 +7,25 @@ rule:
     - kind: return_statement
       regex: "^return\\s*;?$"
       inside:
-        until:
-          not:
-            kind: statement_block
+        stopBy:
+          rule:
+            not:
+              kind: statement_block
         kind: method_definition
         has:
-          immediate: true
+          stopBy: neighbor
           kind: property_identifier
           regex: constructor
     - pattern: return $A
       inside:
-        until:
-          any:
-            - kind: function_declaration
-            - kind: arrow_function
-            - kind: function
+        stopBy:
+          rule:
+            any:
+              - kind: function_declaration
+              - kind: arrow_function
+              - kind: function
         has:
-          immediate: true
+          stopBy: neighbor
           kind: property_identifier
           regex: constructor
 note: |
