@@ -26,6 +26,7 @@ rule:
               - kind: do_statement
               - kind: if_statement
       - inside:
+          field: condition
           stopBy:
             rule:
               not:
