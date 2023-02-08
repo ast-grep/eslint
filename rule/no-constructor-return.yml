@@ -8,9 +8,8 @@ rule:
       regex: "^return\\s*;?$"
       inside:
         stopBy:
-          rule:
-            not:
-              kind: statement_block
+          not:
+            kind: statement_block
         kind: method_definition
         has:
           stopBy: neighbor
@@ -19,11 +18,10 @@ rule:
     - pattern: return $A
       inside:
         stopBy:
-          rule:
-            any:
-              - kind: function_declaration
-              - kind: arrow_function
-              - kind: function
+          any:
+            - kind: function_declaration
+            - kind: arrow_function
+            - kind: function
         has:
           stopBy: neighbor
           kind: property_identifier

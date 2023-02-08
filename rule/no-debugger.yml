@@ -1,6 +1,6 @@
 id: no-debugger
 message: Unexpected `debugger` statement.
-severity: warning
+severity: error
 language: TypeScript
 rule:
   pattern: debugger
