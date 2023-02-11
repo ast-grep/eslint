@@ -3,8 +3,8 @@ valid:
   - "var foo = { get bar(){return true;} };"
   - "var foo = { get bar(): boolean {return true;} };"
   # allowImplicit: true
-  - "var foo = { get bar() {return;} };"
-  - "var foo = { get bar(){return true;} };"
+  # - "var foo = { get bar() {return;} };"
+  # - "var foo = { get bar(){return true;} };"
   # - "var foo = { get bar(){if(bar) {return;} return true;} };"
   # allowImplicit: false
   - "class foo { get bar(){return true;} }"
@@ -12,7 +12,7 @@ valid:
   - "class foo { get(){return true;} }"
   # option: {allowImplicit: true}
   - "class foo { get bar(){return true;} }"
-  - "class foo { get bar(){return;} }"
+  # - "class foo { get bar(){return;} }"
   # defineProperty
   - "Object.defineProperty(foo, \"bar\", { get: function () {return true;}});"
   - "Object.defineProperty(foo, \"bar\", { get: function () { ~function (){ return true; }();return true;}});"
@@ -26,9 +26,9 @@ valid:
   - "Object.create(foo, { bar: { get: () => {return true;} } });"
   # option: {allowImplicit: true}
   - "Object.defineProperty(foo, \"bar\", { get: function () {return true;}});"
-  - "Object.defineProperty(foo, \"bar\", { get: function (){return;}});"
+  # - "Object.defineProperty(foo, \"bar\", { get: function (){return;}});"
   - "Object.defineProperties(foo, { bar: { get: function () {return true;}} });"
-  - "Object.defineProperties(foo, { bar: { get: function () {return;}} });"
+  # - "Object.defineProperties(foo, { bar: { get: function () {return;}} });"
   - "Reflect.defineProperty(foo, \"bar\", { get: function () {return true;}});"
   # not getter.
   - "var get = function(){};"

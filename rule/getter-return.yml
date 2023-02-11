@@ -8,7 +8,7 @@ rule:
       regex: ^get\s
       not:
         has:
-          pattern: return $
+          pattern: return $_
           stopBy:
             any:
               - kind: if_statement
@@ -31,7 +31,7 @@ rule:
           - kind: method_definition
             not:
               has:
-                pattern: return $
+                pattern: return $_
                 stopBy:
                   any:
                     - kind: if_statement
