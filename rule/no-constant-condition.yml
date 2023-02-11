@@ -8,15 +8,20 @@ rule:
     - kind: ternary_expression
   has:
     field: condition
-    stopBy: neighbor
+    stopBy:
+      not:
+        kind: parenthesized_expression
     any:
       - kind: number
+      - kind: regex
       - kind: 'true'
       - kind: 'false'
       - kind: undefined
       - kind: 'null'
       - kind: string
       - kind: template_string
+        not:
+          regex: '`\$\{.+?\}`'
       - kind: arrow_function
       - kind: function
       - kind: object
