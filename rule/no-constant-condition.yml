@@ -8,25 +8,7 @@ rule:
     - kind: ternary_expression
   has:
     field: condition
-    stopBy:
-      not:
-        kind: parenthesized_expression
-    any:
-      - kind: number
-      - kind: regex
-      - kind: 'true'
-      - kind: 'false'
-      - kind: undefined
-      - kind: 'null'
-      - kind: string
-      - kind: template_string
-        not:
-          regex: '`\$\{.+?\}`'
-      - kind: arrow_function
-      - kind: function
-      - kind: object
-      - kind: class
-      - kind: array
-      - kind: new_expression
+    stopBy: neighbor
+    matches: is-constant-boolean
 note: |
   A constant expression (for example, a literal) as a test condition might be a typo or development trigger for a specific behavior.

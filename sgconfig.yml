@@ -1,4 +1,6 @@
 ruleDirs:
   - rule
+utilDirs:
+  - utils
 testConfigs:
   - testDir: rule-test

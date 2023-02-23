@@ -1,0 +1,150 @@
+id: is-constant
+language: TypeScript
+rule:
+  any:
+    - matches: constantFalse
+    - matches: constantTrue
+    - kind: parenthesized_expression
+      has:
+        stopBy: neighbor
+        matches: is-constant
+    - kind: assignment_expression
+      has:
+        field: right
+        stopBy: neighbor
+        matches: is-constant
+    - kind: sequence_expression
+      has:
+        field: right
+        stopBy: neighbor
+        matches: is-constant
+    - kind: spread_element
+      has:
+        stopBy: neighbor
+        matches: is-constant
+    - kind: unary_expression
+      any:
+        - has:
+            field: operator
+            stopBy: neighbor
+            regex: void
+        - has:
+            field: argument
+            stopBy: neighbor
+            matches: is-constant
+          not:
+            has:
+              field: operator
+              stopBy: neighbor
+              regex: '!'
+        - all:
+            - has:
+                field: operator
+                stopBy: neighbor
+                regex: '!'
+            - has:
+                field: argument
+                stopBy: neighbor
+                matches: is-constant-boolean
+    - kind: binary_expression
+      not:
+        has:
+          field: operator
+          stopBy: neighbor
+          regex: '&&|\|\||\?\?'
+      all:
+        - has:
+            field: left
+            stopBy: neighbor
+            matches: is-constant
+        - has:
+            field: right
+            stopBy: neighbor
+            matches: is-constant
+        - not:
+            has:
+              field: operator
+              stopBy: neighbor
+              regex: 'in'
+    - kind: binary_expression
+      has:
+        field: operator
+        stopBy: neighbor
+        regex: '&&|\|\||\?\?'
+      matches: isLogicalIdentity
+    - pattern: Boolean()
+    - pattern: Boolean($A)
+      has:
+        matches: is-constant-boolean
+        has:
+          field: argument
+          stopBy: neighbor
+          has:
+            stopBy: neighbor
+            matches: is-constant-boolean
+
+utils:
+  isLogicalIdentity:
+    any:
+      - all:
+        - has:
+            field: left
+            stopBy: neighbor
+            matches: is-constant
+        - has:
+            field: right
+            stopBy: neighbor
+            matches: is-constant
+      - all:
+        - has:
+            field: left
+            stopBy: neighbor
+            matches: constantTrue
+        - has:
+            field: operator
+            stopBy: neighbor
+            regex: '\|\|'
+      - all:
+        - has:
+            field: right
+            stopBy: neighbor
+            matches: constantFalse
+        - has:
+            field: operator
+            stopBy: neighbor
+            regex: '&&'
+
+  constantFalse:
+    any:
+      - kind: 'false'
+      - kind: undefined
+      - kind: 'null'
+      - pattern: '0'
+      - pattern: '""'
+      - pattern: "''"
+      - pattern: '``'
+  constantTrue:
+    any:
+      - kind: 'true'
+      - kind: regex
+      - kind: arrow_function
+      - kind: function
+      - kind: object
+      - kind: class
+      - kind: array
+        not:
+          has:
+            stopBy: neighbor
+            not:
+              matches: is-constant
+      - kind: number
+        not:
+          pattern: '0'
+      - kind: string
+        not:
+          any:
+            - pattern: '""'
+            - pattern: "''"
+      - kind: template_string #TODO
+        not:
+          regex: '`\$\{.+?\}`'

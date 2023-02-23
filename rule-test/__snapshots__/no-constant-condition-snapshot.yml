@@ -50,6 +50,10 @@ snapshots:
       style: secondary
       start: 20
       end: 24
+    - source: (true)
+      style: secondary
+      start: 19
+      end: 25
   function* foo(){while(true){if (true) {yield 'foo';}}}:
     labels:
     - source: if (true) {yield 'foo';}
@@ -70,6 +74,10 @@ snapshots:
       style: secondary
       start: 3
       end: 10
+    - source: (/foo/ui)
+      style: secondary
+      start: 2
+      end: 11
   if(0b0n);:
     labels:
     - source: if(0b0n);
@@ -80,6 +88,10 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: (0b0n)
+      style: secondary
+      start: 2
+      end: 8
   if(0b1n);:
     labels:
     - source: if(0b1n);
@@ -90,6 +102,10 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: (0b1n)
+      style: secondary
+      start: 2
+      end: 8
   if(0n);:
     labels:
     - source: if(0n);
@@ -100,6 +116,10 @@ snapshots:
       style: secondary
       start: 3
       end: 5
+    - source: (0n)
+      style: secondary
+      start: 2
+      end: 6
   if(0o0n);:
     labels:
     - source: if(0o0n);
@@ -110,6 +130,10 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: (0o0n)
+      style: secondary
+      start: 2
+      end: 8
   if(0o1n);:
     labels:
     - source: if(0o1n);
@@ -120,6 +144,10 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: (0o1n)
+      style: secondary
+      start: 2
+      end: 8
   if(0x0n);:
     labels:
     - source: if(0x0n);
@@ -130,6 +158,10 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: (0x0n)
+      style: secondary
+      start: 2
+      end: 8
   if(0x1n);:
     labels:
     - source: if(0x1n);
@@ -140,6 +172,10 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: (0x1n)
+      style: secondary
+      start: 2
+      end: 8
   if(1);:
     labels:
     - source: if(1);
@@ -150,6 +186,10 @@ snapshots:
       style: secondary
       start: 3
       end: 4
+    - source: (1)
+      style: secondary
+      start: 2
+      end: 5
   if([]) {}:
     labels:
     - source: if([]) {}
@@ -160,6 +200,10 @@ snapshots:
       style: secondary
       start: 3
       end: 5
+    - source: ([])
+      style: secondary
+      start: 2
+      end: 6
   if([a]) {}:
     labels:
     - source: if([a]) {}
@@ -170,6 +214,10 @@ snapshots:
       style: secondary
       start: 3
       end: 6
+    - source: ([a])
+      style: secondary
+      start: 2
+      end: 7
   if(`${'bar' + `foo`}`);:
     labels:
     - source: if(`${'bar' + `foo`}`);
@@ -210,6 +258,10 @@ snapshots:
       style: secondary
       start: 3
       end: 14
+    - source: (`${bar}foo`)
+      style: secondary
+      start: 2
+      end: 15
   ? |-
     if(`\
     `);
@@ -226,6 +278,12 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: |-
+        (`\
+        `)
+      style: secondary
+      start: 2
+      end: 8
   if(``);:
     labels:
     - source: if(``);
@@ -236,6 +294,10 @@ snapshots:
       style: secondary
       start: 3
       end: 5
+    - source: (``)
+      style: secondary
+      start: 2
+      end: 6
   if(`foo${0 || 1}`);:
     labels:
     - source: if(`foo${0 || 1}`);
@@ -246,6 +308,10 @@ snapshots:
       style: secondary
       start: 3
       end: 17
+    - source: (`foo${0 || 1}`)
+      style: secondary
+      start: 2
+      end: 18
   if(`foo${bar}`);:
     labels:
     - source: if(`foo${bar}`);
@@ -256,6 +322,10 @@ snapshots:
       style: secondary
       start: 3
       end: 14
+    - source: (`foo${bar}`)
+      style: secondary
+      start: 2
+      end: 15
   if(`foo${false || true}`);:
     labels:
     - source: if(`foo${false || true}`);
@@ -266,6 +336,10 @@ snapshots:
       style: secondary
       start: 3
       end: 24
+    - source: (`foo${false || true}`)
+      style: secondary
+      start: 2
+      end: 25
   if(`foo`);:
     labels:
     - source: if(`foo`);
@@ -276,6 +350,10 @@ snapshots:
       style: secondary
       start: 3
       end: 8
+    - source: (`foo`)
+      style: secondary
+      start: 2
+      end: 9
   if(class {}) {}:
     labels:
     - source: if(class {}) {}
@@ -286,6 +364,10 @@ snapshots:
       style: secondary
       start: 3
       end: 11
+    - source: (class {})
+      style: secondary
+      start: 2
+      end: 12
   if(new Boolean(foo)) {}:
     labels:
     - source: if(new Boolean(foo)) {}
@@ -296,6 +378,10 @@ snapshots:
       style: secondary
       start: 3
       end: 19
+    - source: (new Boolean(foo))
+      style: secondary
+      start: 2
+      end: 20
   if(new Foo()) {}:
     labels:
     - source: if(new Foo()) {}
@@ -306,6 +392,10 @@ snapshots:
       style: secondary
       start: 3
       end: 12
+    - source: (new Foo())
+      style: secondary
+      start: 2
+      end: 13
   if(new Number(foo)) {}:
     labels:
     - source: if(new Number(foo)) {}
@@ -316,6 +406,10 @@ snapshots:
       style: secondary
       start: 3
       end: 18
+    - source: (new Number(foo))
+      style: secondary
+      start: 2
+      end: 19
   if(new String(foo)) {}:
     labels:
     - source: if(new String(foo)) {}
@@ -326,6 +420,10 @@ snapshots:
       style: secondary
       start: 3
       end: 18
+    - source: (new String(foo))
+      style: secondary
+      start: 2
+      end: 19
   if(true);:
     labels:
     - source: if(true);
@@ -336,6 +434,10 @@ snapshots:
       style: secondary
       start: 3
       end: 7
+    - source: (true)
+      style: secondary
+      start: 2
+      end: 8
   if({});:
     labels:
     - source: if({});
@@ -346,6 +448,10 @@ snapshots:
       style: secondary
       start: 3
       end: 5
+    - source: ({})
+      style: secondary
+      start: 2
+      end: 6
   'q = 0 ? 1 : 2;':
     labels:
     - source: '0 ? 1 : 2'
