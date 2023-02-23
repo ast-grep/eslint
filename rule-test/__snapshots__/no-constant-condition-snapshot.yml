@@ -1,5 +1,23 @@
 id: no-constant-condition
 snapshots:
+  '(q = 0) ? 1 : 2;':
+    labels:
+    - source: '(q = 0) ? 1 : 2'
+      style: primary
+      start: 0
+      end: 15
+    - source: '0'
+      style: secondary
+      start: 5
+      end: 6
+    - source: q = 0
+      style: secondary
+      start: 1
+      end: 6
+    - source: (q = 0)
+      style: secondary
+      start: 0
+      end: 7
   '1 ? 1 : 2;':
     labels:
     - source: '1 ? 1 : 2'
@@ -64,6 +82,290 @@ snapshots:
       style: secondary
       start: 32
       end: 36
+  if(!(a &&= 0) + 1);:
+    labels:
+    - source: if(!(a &&= 0) + 1);
+      style: primary
+      start: 0
+      end: 19
+    - source: '!'
+      style: secondary
+      start: 3
+      end: 4
+    - source: '&&='
+      style: secondary
+      start: 7
+      end: 10
+    - source: '0'
+      style: secondary
+      start: 11
+      end: 12
+    - source: a &&= 0
+      style: secondary
+      start: 5
+      end: 12
+    - source: (a &&= 0)
+      style: secondary
+      start: 4
+      end: 13
+    - source: '!(a &&= 0)'
+      style: secondary
+      start: 3
+      end: 13
+    - source: '1'
+      style: secondary
+      start: 16
+      end: 17
+    - source: '!(a &&= 0) + 1'
+      style: secondary
+      start: 3
+      end: 17
+    - source: (!(a &&= 0) + 1)
+      style: secondary
+      start: 2
+      end: 18
+  if(!(a &&= false));:
+    labels:
+    - source: if(!(a &&= false));
+      style: primary
+      start: 0
+      end: 19
+    - source: '!'
+      style: secondary
+      start: 3
+      end: 4
+    - source: '&&='
+      style: secondary
+      start: 7
+      end: 10
+    - source: 'false'
+      style: secondary
+      start: 11
+      end: 16
+    - source: a &&= false
+      style: secondary
+      start: 5
+      end: 16
+    - source: (a &&= false)
+      style: secondary
+      start: 4
+      end: 17
+    - source: '!(a &&= false)'
+      style: secondary
+      start: 3
+      end: 17
+    - source: (!(a &&= false))
+      style: secondary
+      start: 2
+      end: 18
+  if(!(true || a));:
+    labels:
+    - source: if(!(true || a));
+      style: primary
+      start: 0
+      end: 17
+    - source: '!'
+      style: secondary
+      start: 3
+      end: 4
+    - source: '||'
+      style: secondary
+      start: 10
+      end: 12
+    - source: '||'
+      style: secondary
+      start: 10
+      end: 12
+    - source: 'true'
+      style: secondary
+      start: 5
+      end: 9
+    - source: true || a
+      style: secondary
+      start: 5
+      end: 14
+    - source: (true || a)
+      style: secondary
+      start: 4
+      end: 15
+    - source: '!(true || a)'
+      style: secondary
+      start: 3
+      end: 15
+    - source: (!(true || a))
+      style: secondary
+      start: 2
+      end: 16
+  if(!typeof a === 'string');:
+    labels:
+    - source: if(!typeof a === 'string');
+      style: primary
+      start: 0
+      end: 27
+    - source: '!'
+      style: secondary
+      start: 3
+      end: 4
+    - source: typeof
+      style: secondary
+      start: 4
+      end: 10
+    - source: typeof a
+      style: secondary
+      start: 4
+      end: 12
+    - source: '!typeof a'
+      style: secondary
+      start: 3
+      end: 12
+    - source: '''string'''
+      style: secondary
+      start: 17
+      end: 25
+    - source: '!typeof a === ''string'''
+      style: secondary
+      start: 3
+      end: 25
+    - source: (!typeof a === 'string')
+      style: secondary
+      start: 2
+      end: 26
+  if((a &&= false) || false);:
+    labels:
+    - source: if((a &&= false) || false);
+      style: primary
+      start: 0
+      end: 27
+    - source: '||'
+      style: secondary
+      start: 17
+      end: 19
+    - source: '&&='
+      style: secondary
+      start: 6
+      end: 9
+    - source: 'false'
+      style: secondary
+      start: 10
+      end: 15
+    - source: a &&= false
+      style: secondary
+      start: 4
+      end: 15
+    - source: (a &&= false)
+      style: secondary
+      start: 3
+      end: 16
+    - source: 'false'
+      style: secondary
+      start: 20
+      end: 25
+    - source: (a &&= false) || false
+      style: secondary
+      start: 3
+      end: 25
+    - source: ((a &&= false) || false)
+      style: secondary
+      start: 2
+      end: 26
+  if(+(!(a && 0)));:
+    labels:
+    - source: if(+(!(a && 0)));
+      style: primary
+      start: 0
+      end: 17
+    - source: '!'
+      style: secondary
+      start: 5
+      end: 6
+    - source: '&&'
+      style: secondary
+      start: 9
+      end: 11
+    - source: '&&'
+      style: secondary
+      start: 9
+      end: 11
+    - source: '0'
+      style: secondary
+      start: 12
+      end: 13
+    - source: a && 0
+      style: secondary
+      start: 7
+      end: 13
+    - source: (a && 0)
+      style: secondary
+      start: 6
+      end: 14
+    - source: '!(a && 0)'
+      style: secondary
+      start: 5
+      end: 14
+    - source: (!(a && 0))
+      style: secondary
+      start: 4
+      end: 15
+    - source: +(!(a && 0))
+      style: secondary
+      start: 3
+      end: 15
+    - source: (+(!(a && 0)))
+      style: secondary
+      start: 2
+      end: 16
+  if(-('foo' || a));:
+    labels:
+    - source: if(-('foo' || a));
+      style: primary
+      start: 0
+      end: 18
+    - source: '||'
+      style: secondary
+      start: 11
+      end: 13
+    - source: '''foo'''
+      style: secondary
+      start: 5
+      end: 10
+    - source: '||'
+      style: secondary
+      start: 11
+      end: 13
+    - source: '''foo'' || a'
+      style: secondary
+      start: 5
+      end: 15
+    - source: ('foo' || a)
+      style: secondary
+      start: 4
+      end: 16
+    - source: -('foo' || a)
+      style: secondary
+      start: 3
+      end: 16
+    - source: (-('foo' || a))
+      style: secondary
+      start: 2
+      end: 17
+  if(-2);:
+    labels:
+    - source: if(-2);
+      style: primary
+      start: 0
+      end: 7
+    - source: '2'
+      style: secondary
+      start: 4
+      end: 5
+    - source: '-2'
+      style: secondary
+      start: 3
+      end: 5
+    - source: (-2)
+      style: secondary
+      start: 2
+      end: 6
   if(/foo/ui);:
     labels:
     - source: if(/foo/ui);
@@ -78,6 +380,104 @@ snapshots:
       style: secondary
       start: 2
       end: 11
+  if(0 < 1);:
+    labels:
+    - source: if(0 < 1);
+      style: primary
+      start: 0
+      end: 10
+    - source: '0'
+      style: secondary
+      start: 3
+      end: 4
+    - source: '1'
+      style: secondary
+      start: 7
+      end: 8
+    - source: 0 < 1
+      style: secondary
+      start: 3
+      end: 8
+    - source: (0 < 1)
+      style: secondary
+      start: 2
+      end: 9
+  if(0 || !(a && null));:
+    labels:
+    - source: if(0 || !(a && null));
+      style: primary
+      start: 0
+      end: 22
+    - source: '||'
+      style: secondary
+      start: 5
+      end: 7
+    - source: '0'
+      style: secondary
+      start: 3
+      end: 4
+    - source: '!'
+      style: secondary
+      start: 8
+      end: 9
+    - source: '&&'
+      style: secondary
+      start: 12
+      end: 14
+    - source: '&&'
+      style: secondary
+      start: 12
+      end: 14
+    - source: 'null'
+      style: secondary
+      start: 15
+      end: 19
+    - source: a && null
+      style: secondary
+      start: 10
+      end: 19
+    - source: (a && null)
+      style: secondary
+      start: 9
+      end: 20
+    - source: '!(a && null)'
+      style: secondary
+      start: 8
+      end: 20
+    - source: 0 || !(a && null)
+      style: secondary
+      start: 3
+      end: 20
+    - source: (0 || !(a && null))
+      style: secondary
+      start: 2
+      end: 21
+  if(0 || 1);:
+    labels:
+    - source: if(0 || 1);
+      style: primary
+      start: 0
+      end: 11
+    - source: '||'
+      style: secondary
+      start: 5
+      end: 7
+    - source: '0'
+      style: secondary
+      start: 3
+      end: 4
+    - source: '1'
+      style: secondary
+      start: 8
+      end: 9
+    - source: 0 || 1
+      style: secondary
+      start: 3
+      end: 9
+    - source: (0 || 1)
+      style: secondary
+      start: 2
+      end: 10
   if(0b0n);:
     labels:
     - source: if(0b0n);
@@ -354,6 +754,94 @@ snapshots:
       style: secondary
       start: 2
       end: 9
+  if(a &&= false);:
+    labels:
+    - source: if(a &&= false);
+      style: primary
+      start: 0
+      end: 16
+    - source: '&&='
+      style: secondary
+      start: 5
+      end: 8
+    - source: 'false'
+      style: secondary
+      start: 9
+      end: 14
+    - source: a &&= false
+      style: secondary
+      start: 3
+      end: 14
+    - source: (a &&= false)
+      style: secondary
+      start: 2
+      end: 15
+  if(a &&= null);:
+    labels:
+    - source: if(a &&= null);
+      style: primary
+      start: 0
+      end: 15
+    - source: '&&='
+      style: secondary
+      start: 5
+      end: 8
+    - source: 'null'
+      style: secondary
+      start: 9
+      end: 13
+    - source: a &&= null
+      style: secondary
+      start: 3
+      end: 13
+    - source: (a &&= null)
+      style: secondary
+      start: 2
+      end: 14
+  if(a &&= void b);:
+    labels:
+    - source: if(a &&= void b);
+      style: primary
+      start: 0
+      end: 17
+    - source: '&&='
+      style: secondary
+      start: 5
+      end: 8
+    - source: void
+      style: secondary
+      start: 9
+      end: 13
+    - source: void b
+      style: secondary
+      start: 9
+      end: 15
+    - source: a &&= void b
+      style: secondary
+      start: 3
+      end: 15
+    - source: (a &&= void b)
+      style: secondary
+      start: 2
+      end: 16
+  if(a, 1);:
+    labels:
+    - source: if(a, 1);
+      style: primary
+      start: 0
+      end: 9
+    - source: '1'
+      style: secondary
+      start: 6
+      end: 7
+    - source: a, 1
+      style: secondary
+      start: 3
+      end: 7
+    - source: (a, 1)
+      style: secondary
+      start: 2
+      end: 8
   if(class {}) {}:
     labels:
     - source: if(class {}) {}
@@ -368,6 +856,44 @@ snapshots:
       style: secondary
       start: 2
       end: 12
+  if(false || (a &&= false));:
+    labels:
+    - source: if(false || (a &&= false));
+      style: primary
+      start: 0
+      end: 27
+    - source: '||'
+      style: secondary
+      start: 9
+      end: 11
+    - source: 'false'
+      style: secondary
+      start: 3
+      end: 8
+    - source: '&&='
+      style: secondary
+      start: 15
+      end: 18
+    - source: 'false'
+      style: secondary
+      start: 19
+      end: 24
+    - source: a &&= false
+      style: secondary
+      start: 13
+      end: 24
+    - source: (a &&= false)
+      style: secondary
+      start: 12
+      end: 25
+    - source: false || (a &&= false)
+      style: secondary
+      start: 3
+      end: 25
+    - source: (false || (a &&= false))
+      style: secondary
+      start: 2
+      end: 26
   if(new Boolean(foo)) {}:
     labels:
     - source: if(new Boolean(foo)) {}
