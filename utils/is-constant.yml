@@ -104,15 +104,6 @@ utils:
             field: operator
             stopBy: neighbor
             regex: '\|\|'
-      - all:
-        - has:
-            field: right
-            stopBy: neighbor
-            matches: constantFalse
-        - has:
-            field: operator
-            stopBy: neighbor
-            regex: '&&'
 
   constantFalse:
     any:
