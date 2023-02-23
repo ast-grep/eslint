@@ -252,11 +252,11 @@ invalid:
 # - "while(`${'foo' + 'bar'}`);"
 
 # #5228 , typeof conditions
-# - "if(typeof x){}"
-# - "if(typeof 'abc' === 'string'){}"
-# - "if(a = typeof b){}"
-# - "if(a, typeof b){}"
-# - "if(typeof 'a' == 'string' || typeof 'b' == 'string'){}"
+- "if(typeof x){}"
+- "if(typeof 'abc' === 'string'){}"
+- "if(a = typeof b){}"
+- "if(a, typeof b){}"
+- "if(typeof 'a' == 'string' || typeof 'b' == 'string'){}"
 # - "while(typeof x){}"
 
 # #5726, void conditions
@@ -278,10 +278,10 @@ invalid:
 # - "if(typeof abc==='str' || true){}"
 
 # #11181, string literals
-# - "if('str' || a){}"
-# - "if('str' || abc==='str'){}"
-# - "if('str1' || 'str2'){}"
-# - "if('str1' && 'str2'){}"
+- "if('str' || a){}"
+- "if('str' || abc==='str'){}"
+- "if('str1' || 'str2'){}"
+- "if('str1' && 'str2'){}"
 # - "if(abc==='str' || 'str'){}"
 # - "if(a || 'str'){}"
 
@@ -314,7 +314,7 @@ invalid:
 - "if(0b1n);"
 - "if(0o1n);"
 - "if(0x1n);"
-# - "if(0x1n || foo);"
+- "if(0x1n || foo);"
 
 # Classes and instances are always truthy
 - "if(class {}) {}"

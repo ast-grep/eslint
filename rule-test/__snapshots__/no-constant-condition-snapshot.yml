@@ -230,6 +230,110 @@ snapshots:
       style: secondary
       start: 2
       end: 26
+  if('str' || a){}:
+    labels:
+    - source: if('str' || a){}
+      style: primary
+      start: 0
+      end: 16
+    - source: '||'
+      style: secondary
+      start: 9
+      end: 11
+    - source: '||'
+      style: secondary
+      start: 9
+      end: 11
+    - source: '''str'''
+      style: secondary
+      start: 3
+      end: 8
+    - source: '''str'' || a'
+      style: secondary
+      start: 3
+      end: 13
+    - source: ('str' || a)
+      style: secondary
+      start: 2
+      end: 14
+  if('str' || abc==='str'){}:
+    labels:
+    - source: if('str' || abc==='str'){}
+      style: primary
+      start: 0
+      end: 26
+    - source: '||'
+      style: secondary
+      start: 9
+      end: 11
+    - source: '||'
+      style: secondary
+      start: 9
+      end: 11
+    - source: '''str'''
+      style: secondary
+      start: 3
+      end: 8
+    - source: '''str'' || abc===''str'''
+      style: secondary
+      start: 3
+      end: 23
+    - source: ('str' || abc==='str')
+      style: secondary
+      start: 2
+      end: 24
+  if('str1' && 'str2'){}:
+    labels:
+    - source: if('str1' && 'str2'){}
+      style: primary
+      start: 0
+      end: 22
+    - source: '&&'
+      style: secondary
+      start: 10
+      end: 12
+    - source: '''str1'''
+      style: secondary
+      start: 3
+      end: 9
+    - source: '''str2'''
+      style: secondary
+      start: 13
+      end: 19
+    - source: '''str1'' && ''str2'''
+      style: secondary
+      start: 3
+      end: 19
+    - source: ('str1' && 'str2')
+      style: secondary
+      start: 2
+      end: 20
+  if('str1' || 'str2'){}:
+    labels:
+    - source: if('str1' || 'str2'){}
+      style: primary
+      start: 0
+      end: 22
+    - source: '||'
+      style: secondary
+      start: 10
+      end: 12
+    - source: '''str1'''
+      style: secondary
+      start: 3
+      end: 9
+    - source: '''str2'''
+      style: secondary
+      start: 13
+      end: 19
+    - source: '''str1'' || ''str2'''
+      style: secondary
+      start: 3
+      end: 19
+    - source: ('str1' || 'str2')
+      style: secondary
+      start: 2
+      end: 20
   if((a &&= false) || false);:
     labels:
     - source: if((a &&= false) || false);
@@ -314,6 +418,24 @@ snapshots:
       style: secondary
       start: 2
       end: 16
+  if(+1) {}:
+    labels:
+    - source: if(+1) {}
+      style: primary
+      start: 0
+      end: 9
+    - source: '1'
+      style: secondary
+      start: 4
+      end: 5
+    - source: '+1'
+      style: secondary
+      start: 3
+      end: 5
+    - source: (+1)
+      style: secondary
+      start: 2
+      end: 6
   if(-('foo' || a));:
     labels:
     - source: if(-('foo' || a));
@@ -562,6 +684,32 @@ snapshots:
       style: secondary
       start: 2
       end: 8
+  if(0x1n || foo);:
+    labels:
+    - source: if(0x1n || foo);
+      style: primary
+      start: 0
+      end: 16
+    - source: '||'
+      style: secondary
+      start: 8
+      end: 10
+    - source: '||'
+      style: secondary
+      start: 8
+      end: 10
+    - source: 0x1n
+      style: secondary
+      start: 3
+      end: 7
+    - source: 0x1n || foo
+      style: secondary
+      start: 3
+      end: 14
+    - source: (0x1n || foo)
+      style: secondary
+      start: 2
+      end: 15
   if(0x1n);:
     labels:
     - source: if(0x1n);
@@ -824,6 +972,28 @@ snapshots:
       style: secondary
       start: 2
       end: 16
+  if(a = typeof b){}:
+    labels:
+    - source: if(a = typeof b){}
+      style: primary
+      start: 0
+      end: 18
+    - source: typeof
+      style: secondary
+      start: 7
+      end: 13
+    - source: typeof b
+      style: secondary
+      start: 7
+      end: 15
+    - source: a = typeof b
+      style: secondary
+      start: 3
+      end: 15
+    - source: (a = typeof b)
+      style: secondary
+      start: 2
+      end: 16
   if(a, 1);:
     labels:
     - source: if(a, 1);
@@ -842,6 +1012,28 @@ snapshots:
       style: secondary
       start: 2
       end: 8
+  if(a, typeof b){}:
+    labels:
+    - source: if(a, typeof b){}
+      style: primary
+      start: 0
+      end: 17
+    - source: typeof
+      style: secondary
+      start: 6
+      end: 12
+    - source: typeof b
+      style: secondary
+      start: 6
+      end: 14
+    - source: a, typeof b
+      style: secondary
+      start: 3
+      end: 14
+    - source: (a, typeof b)
+      style: secondary
+      start: 2
+      end: 15
   if(class {}) {}:
     labels:
     - source: if(class {}) {}
@@ -964,6 +1156,100 @@ snapshots:
       style: secondary
       start: 2
       end: 8
+  if(typeof 'a' == 'string' || typeof 'b' == 'string'){}:
+    labels:
+    - source: if(typeof 'a' == 'string' || typeof 'b' == 'string'){}
+      style: primary
+      start: 0
+      end: 54
+    - source: '||'
+      style: secondary
+      start: 26
+      end: 28
+    - source: '''a'''
+      style: secondary
+      start: 10
+      end: 13
+    - source: typeof 'a'
+      style: secondary
+      start: 3
+      end: 13
+    - source: '''string'''
+      style: secondary
+      start: 17
+      end: 25
+    - source: typeof 'a' == 'string'
+      style: secondary
+      start: 3
+      end: 25
+    - source: '''b'''
+      style: secondary
+      start: 36
+      end: 39
+    - source: typeof 'b'
+      style: secondary
+      start: 29
+      end: 39
+    - source: '''string'''
+      style: secondary
+      start: 43
+      end: 51
+    - source: typeof 'b' == 'string'
+      style: secondary
+      start: 29
+      end: 51
+    - source: typeof 'a' == 'string' || typeof 'b' == 'string'
+      style: secondary
+      start: 3
+      end: 51
+    - source: (typeof 'a' == 'string' || typeof 'b' == 'string')
+      style: secondary
+      start: 2
+      end: 52
+  if(typeof 'abc' === 'string'){}:
+    labels:
+    - source: if(typeof 'abc' === 'string'){}
+      style: primary
+      start: 0
+      end: 31
+    - source: '''abc'''
+      style: secondary
+      start: 10
+      end: 15
+    - source: typeof 'abc'
+      style: secondary
+      start: 3
+      end: 15
+    - source: '''string'''
+      style: secondary
+      start: 20
+      end: 28
+    - source: typeof 'abc' === 'string'
+      style: secondary
+      start: 3
+      end: 28
+    - source: (typeof 'abc' === 'string')
+      style: secondary
+      start: 2
+      end: 29
+  if(typeof x){}:
+    labels:
+    - source: if(typeof x){}
+      style: primary
+      start: 0
+      end: 14
+    - source: typeof
+      style: secondary
+      start: 3
+      end: 9
+    - source: typeof x
+      style: secondary
+      start: 3
+      end: 11
+    - source: (typeof x)
+      style: secondary
+      start: 2
+      end: 12
   if({});:
     labels:
     - source: if({});
