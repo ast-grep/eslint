@@ -9,9 +9,11 @@ async function foo(things) {
   return bar(results);
 }
 
-if (false) {
+if (a = typeof str) {
   console.log('123')
 }
+
+function a(c, b, c){}
 
 class Test {
   set test(_: any) {

@@ -1,0 +1,146 @@
+id: no-dupe-args
+snapshots:
+  function a(a, a, a) {}:
+    labels:
+    - source: a
+      style: primary
+      start: 14
+      end: 15
+    - source: a
+      style: secondary
+      start: 11
+      end: 12
+    - source: a
+      style: secondary
+      start: 11
+      end: 12
+    - source: a
+      style: secondary
+      start: 14
+      end: 15
+  function a(a, b, a) {}:
+    labels:
+    - source: a
+      style: primary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 11
+      end: 12
+    - source: a
+      style: secondary
+      start: 11
+      end: 12
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+  function a(a, b, a, b) {}:
+    labels:
+    - source: a
+      style: primary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 11
+      end: 12
+    - source: a
+      style: secondary
+      start: 11
+      end: 12
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+  function a(a, b, b) {}:
+    labels:
+    - source: b
+      style: primary
+      start: 17
+      end: 18
+    - source: b
+      style: secondary
+      start: 14
+      end: 15
+    - source: b
+      style: secondary
+      start: 14
+      end: 15
+    - source: b
+      style: secondary
+      start: 17
+      end: 18
+  var a = function(a, a, a) {}:
+    labels:
+    - source: a
+      style: primary
+      start: 20
+      end: 21
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 20
+      end: 21
+  var a = function(a, b, a) {}:
+    labels:
+    - source: a
+      style: primary
+      start: 23
+      end: 24
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 23
+      end: 24
+  var a = function(a, b, a, b) {}:
+    labels:
+    - source: a
+      style: primary
+      start: 23
+      end: 24
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 17
+      end: 18
+    - source: a
+      style: secondary
+      start: 23
+      end: 24
+  var a = function(a, b, b) {}:
+    labels:
+    - source: b
+      style: primary
+      start: 23
+      end: 24
+    - source: b
+      style: secondary
+      start: 20
+      end: 21
+    - source: b
+      style: secondary
+      start: 20
+      end: 21
+    - source: b
+      style: secondary
+      start: 23
+      end: 24

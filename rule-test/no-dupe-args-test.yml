@@ -1,0 +1,16 @@
+id: no-dupe-args
+valid:
+  - "function a(a, b, c){}"
+  - "var a = function(a, b, c){}"
+  - "function a({a, b}, {c, d}){}"
+  - "function a([ , a]) {}"
+  - "function foo([[a, b], [c, d]]) {}"
+invalid:
+  - "function a(a, b, b) {}"
+  - "function a(a, a, a) {}"
+  - "function a(a, b, a) {}"
+  - "function a(a, b, a, b) {}"
+  - "var a = function(a, b, b) {}"
+  - "var a = function(a, a, a) {}"
+  - "var a = function(a, b, a) {}"
+  - "var a = function(a, b, a, b) {}"

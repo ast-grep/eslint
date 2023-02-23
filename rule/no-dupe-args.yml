@@ -1,0 +1,15 @@
+id: no-dupe-args
+message: Duplicate param '$NAME'.
+severity: error
+language: TypeScript
+rule:
+  pattern: $NAME
+  kind: identifier
+  inside:
+    kind: required_parameter
+    follows:
+      stopBy: end
+      has:
+        pattern: $NAME
+note: |
+  If more than one parameter has the same name in a function definition, the last occurrence “shadows” the preceding occurrences. A duplicated name might be a typing error.
