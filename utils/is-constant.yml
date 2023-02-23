@@ -6,70 +6,56 @@ rule:
     - matches: constantTrue
     - kind: parenthesized_expression
       has:
-        stopBy: neighbor
         matches: is-constant
     - kind: assignment_expression
       has:
         field: right
-        stopBy: neighbor
         matches: is-constant
     - kind: sequence_expression
       has:
         field: right
-        stopBy: neighbor
         matches: is-constant
     - kind: spread_element
       has:
-        stopBy: neighbor
         matches: is-constant
     - kind: unary_expression
       any:
         - has:
             field: operator
-            stopBy: neighbor
             regex: void
         - has:
             field: argument
-            stopBy: neighbor
             matches: is-constant
           not:
             has:
               field: operator
-              stopBy: neighbor
               regex: '!'
         - all:
             - has:
                 field: operator
-                stopBy: neighbor
                 regex: '!'
             - has:
                 field: argument
-                stopBy: neighbor
                 matches: is-constant-boolean
     - kind: binary_expression
       not:
         has:
           field: operator
-          stopBy: neighbor
           regex: '&&|\|\||\?\?'
       all:
         - has:
             field: left
-            stopBy: neighbor
             matches: is-constant
         - has:
             field: right
-            stopBy: neighbor
             matches: is-constant
         - not:
             has:
               field: operator
-              stopBy: neighbor
               regex: 'in'
     - kind: binary_expression
       has:
         field: operator
-        stopBy: neighbor
         regex: '&&|\|\||\?\?'
       matches: isLogicalIdentity
     - pattern: Boolean()
@@ -78,17 +64,13 @@ rule:
         matches: is-constant-boolean
         has:
           field: argument
-          stopBy: neighbor
           has:
-            stopBy: neighbor
             matches: is-constant-boolean
     - kind: template_string
       not:
         has:
-          stopBy: neighbor
           kind: template_substitution
           has:
-            stopBy: neighbor
             not:
               matches: is-constant
 utils:
@@ -97,20 +79,16 @@ utils:
       - all:
         - has:
             field: left
-            stopBy: neighbor
             matches: is-constant
         - has:
             field: right
-            stopBy: neighbor
             matches: is-constant
       - all:
         - has:
             field: left
-            stopBy: neighbor
             matches: constantTrue
         - has:
             field: operator
-            stopBy: neighbor
             regex: '\|\|'
 
   constantFalse:
@@ -133,7 +111,6 @@ utils:
       - kind: array
         not:
           has:
-            stopBy: neighbor
             not:
               matches: is-constant
       - kind: number

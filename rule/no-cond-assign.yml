@@ -9,7 +9,6 @@ rule:
       - kind: augmented_assignment_expression
     - any:
       - inside:
-          stopBy: neighbor
           kind: parenthesized_expression
           inside:
             stopBy:

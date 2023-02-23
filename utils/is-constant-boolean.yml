@@ -6,76 +6,61 @@ rule:
     - matches: constantTrue
     - kind: parenthesized_expression
       has:
-        stopBy: neighbor
         matches: is-constant-boolean
     - kind: augmented_assignment_expression
       matches: isLogicalIdentity
     - kind: assignment_expression
       has:
         field: right
-        stopBy: neighbor
         matches: is-constant-boolean
     - kind: sequence_expression
       has:
         field: right
-        stopBy: neighbor
         matches: is-constant-boolean
     - kind: spread_element
       has:
-        stopBy: neighbor
         matches: is-constant-boolean
     - kind: unary_expression
       any:
         - has:
             field: operator
-            stopBy: neighbor
             regex: void
         - has:
             field: operator
-            stopBy: neighbor
             regex: typeof
         - has:
             field: argument
-            stopBy: neighbor
             matches: is-constant
           not:
             has:
               field: operator
-              stopBy: neighbor
               regex: '!'
         - all:
             - has:
                 field: operator
-                stopBy: neighbor
                 regex: '!'
             - has:
                 field: argument
-                stopBy: neighbor
                 matches: is-constant-boolean
     - kind: binary_expression
       not:
         has:
           field: operator
-          stopBy: neighbor
           regex: '&&|\|\||\?\?'
       all:
         - has:
             field: left
-            stopBy: neighbor
             matches: is-constant
         - has:
             field: right
-            stopBy: neighbor
             matches: is-constant
         - not:
             has:
-              stopBy: neighbor
               field: operator
               regex: 'in'
     - kind: binary_expression
       has:
         field: operator
-        stopBy: neighbor
         regex: '&&|\|\||\?\?'
       matches: isLogicalIdentity
     - pattern: Boolean()
@@ -84,9 +69,7 @@ rule:
         matches: is-constant-boolean
         has:
           field: argument
-          stopBy: neighbor
           has:
-            stopBy: neighbor
             matches: is-constant-boolean
 
 utils:
@@ -95,30 +78,24 @@ utils:
       - all:
         - has:
             field: left
-            stopBy: neighbor
             matches: is-constant-boolean
         - has:
             field: right
-            stopBy: neighbor
             matches: is-constant-boolean
       - all:
         - has:
             field: operator
-            stopBy: neighbor
             regex: '\|\|'
         - has:
             field: left
-            stopBy: neighbor
             matches: constantTrue
       # right shortcircuit only in is-constant-boolean
       - all:
         - has:
             field: operator
-            stopBy: neighbor
             regex: '&&'
         - has:
             field: right
-            stopBy: neighbor
             matches: constantFalse
 
   constantFalse:
@@ -133,7 +110,6 @@ utils:
       - kind: unary_expression
         has:
           field: operator
-          stopBy: neighbor
           regex: void
   constantTrue:
     any:

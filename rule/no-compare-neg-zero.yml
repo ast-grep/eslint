@@ -6,10 +6,8 @@ rule:
   all:
     - kind: binary_expression
     - has:
-        stopBy: neighbor
         regex: ^-\s*0$
     - has:
-        stopBy: neighbor
         regex: "^(>|>=|<|<=|==|===|!=|!==)$"
 note: |
   Do not use operator to compare -0. `Object.is` should probably be a better alternative.

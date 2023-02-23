@@ -8,7 +8,6 @@ rule:
     - kind: ternary_expression
   has:
     field: condition
-    stopBy: neighbor
     matches: is-constant-boolean
 note: |
   A constant expression (for example, a literal) as a test condition might be a typo or development trigger for a specific behavior.

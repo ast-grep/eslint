@@ -6,10 +6,6 @@ snapshots:
       style: primary
       start: 28
       end: 36
-    - source: get
-      style: secondary
-      start: 28
-      end: 31
     - source: 'Object.create(foo, { bar: { get() {} } })'
       style: secondary
       start: 0
@@ -18,20 +14,16 @@ snapshots:
       style: secondary
       start: 26
       end: 38
+    - source: get
+      style: secondary
+      start: 28
+      end: 31
   'Object.create(foo, { bar: { get: () => {} } })':
     labels:
     - source: 'get: () => {}'
       style: primary
       start: 28
       end: 41
-    - source: () => {}
-      style: secondary
-      start: 33
-      end: 41
-    - source: get
-      style: secondary
-      start: 28
-      end: 31
     - source: 'Object.create(foo, { bar: { get: () => {} } })'
       style: secondary
       start: 0
@@ -40,20 +32,20 @@ snapshots:
       style: secondary
       start: 26
       end: 43
+    - source: get
+      style: secondary
+      start: 28
+      end: 31
+    - source: () => {}
+      style: secondary
+      start: 33
+      end: 41
   'Object.create(foo, { bar: { get: function (){} } });':
     labels:
     - source: 'get: function (){}'
       style: primary
       start: 28
       end: 46
-    - source: function (){}
-      style: secondary
-      start: 33
-      end: 46
-    - source: get
-      style: secondary
-      start: 28
-      end: 31
     - source: 'Object.create(foo, { bar: { get: function (){} } })'
       style: secondary
       start: 0
@@ -62,20 +54,20 @@ snapshots:
       style: secondary
       start: 26
       end: 48
+    - source: get
+      style: secondary
+      start: 28
+      end: 31
+    - source: function (){}
+      style: secondary
+      start: 33
+      end: 46
   'Object.create(foo, { bar: { get: function() {} } })':
     labels:
     - source: 'get: function() {}'
       style: primary
       start: 28
       end: 46
-    - source: function() {}
-      style: secondary
-      start: 33
-      end: 46
-    - source: get
-      style: secondary
-      start: 28
-      end: 31
     - source: 'Object.create(foo, { bar: { get: function() {} } })'
       style: secondary
       start: 0
@@ -84,20 +76,20 @@ snapshots:
       style: secondary
       start: 26
       end: 48
+    - source: get
+      style: secondary
+      start: 28
+      end: 31
+    - source: function() {}
+      style: secondary
+      start: 33
+      end: 46
   'Object.defineProperties(foo, { bar: { get: function () {}} });':
     labels:
     - source: 'get: function () {}'
       style: primary
       start: 38
       end: 57
-    - source: function () {}
-      style: secondary
-      start: 43
-      end: 57
-    - source: get
-      style: secondary
-      start: 38
-      end: 41
     - source: 'Object.defineProperties(foo, { bar: { get: function () {}} })'
       style: secondary
       start: 0
@@ -110,20 +102,20 @@ snapshots:
       style: secondary
       start: 36
       end: 58
+    - source: get
+      style: secondary
+      start: 38
+      end: 41
+    - source: function () {}
+      style: secondary
+      start: 43
+      end: 57
   'Object.defineProperties(foo, { bar: { get: function () {~function () { return true; }()}} });':
     labels:
     - source: 'get: function () {~function () { return true; }()}'
       style: primary
       start: 38
       end: 88
-    - source: function () {~function () { return true; }()}
-      style: secondary
-      start: 43
-      end: 88
-    - source: get
-      style: secondary
-      start: 38
-      end: 41
     - source: 'Object.defineProperties(foo, { bar: { get: function () {~function () { return true; }()}} })'
       style: secondary
       start: 0
@@ -136,20 +128,20 @@ snapshots:
       style: secondary
       start: 36
       end: 89
+    - source: get
+      style: secondary
+      start: 38
+      end: 41
+    - source: function () {~function () { return true; }()}
+      style: secondary
+      start: 43
+      end: 88
   'Object.defineProperties(foo, { bar: { get: function (){if(bar) {return true;}}}});':
     labels:
     - source: 'get: function (){if(bar) {return true;}}'
       style: primary
       start: 38
       end: 78
-    - source: function (){if(bar) {return true;}}
-      style: secondary
-      start: 43
-      end: 78
-    - source: get
-      style: secondary
-      start: 38
-      end: 41
     - source: 'Object.defineProperties(foo, { bar: { get: function (){if(bar) {return true;}}}})'
       style: secondary
       start: 0
@@ -162,20 +154,20 @@ snapshots:
       style: secondary
       start: 36
       end: 79
+    - source: get
+      style: secondary
+      start: 38
+      end: 41
+    - source: function (){if(bar) {return true;}}
+      style: secondary
+      start: 43
+      end: 78
   'Object.defineProperty(foo, "bar", { get: function (){ ~function () { return true; }()}});':
     labels:
     - source: 'get: function (){ ~function () { return true; }()}'
       style: primary
       start: 36
       end: 86
-    - source: function (){ ~function () { return true; }()}
-      style: secondary
-      start: 41
-      end: 86
-    - source: get
-      style: secondary
-      start: 36
-      end: 39
     - source: 'Object.defineProperty(foo, "bar", { get: function (){ ~function () { return true; }()}})'
       style: secondary
       start: 0
@@ -184,20 +176,20 @@ snapshots:
       style: secondary
       start: 34
       end: 87
+    - source: get
+      style: secondary
+      start: 36
+      end: 39
+    - source: function (){ ~function () { return true; }()}
+      style: secondary
+      start: 41
+      end: 86
   'Object.defineProperty(foo, "bar", { get: function (){if(bar) {return true;}}});':
     labels:
     - source: 'get: function (){if(bar) {return true;}}'
       style: primary
       start: 36
       end: 76
-    - source: function (){if(bar) {return true;}}
-      style: secondary
-      start: 41
-      end: 76
-    - source: get
-      style: secondary
-      start: 36
-      end: 39
     - source: 'Object.defineProperty(foo, "bar", { get: function (){if(bar) {return true;}}})'
       style: secondary
       start: 0
@@ -206,20 +198,20 @@ snapshots:
       style: secondary
       start: 34
       end: 77
+    - source: get
+      style: secondary
+      start: 36
+      end: 39
+    - source: function (){if(bar) {return true;}}
+      style: secondary
+      start: 41
+      end: 76
   'Object.defineProperty(foo, "bar", { get: function (){}});':
     labels:
     - source: 'get: function (){}'
       style: primary
       start: 36
       end: 54
-    - source: function (){}
-      style: secondary
-      start: 41
-      end: 54
-    - source: get
-      style: secondary
-      start: 36
-      end: 39
     - source: 'Object.defineProperty(foo, "bar", { get: function (){}})'
       style: secondary
       start: 0
@@ -228,16 +220,20 @@ snapshots:
       style: secondary
       start: 34
       end: 55
+    - source: get
+      style: secondary
+      start: 36
+      end: 39
+    - source: function (){}
+      style: secondary
+      start: 41
+      end: 54
   Object.defineProperty(foo, 'bar', { get(){} });:
     labels:
     - source: get(){}
       style: primary
       start: 36
       end: 43
-    - source: get
-      style: secondary
-      start: 36
-      end: 39
     - source: Object.defineProperty(foo, 'bar', { get(){} })
       style: secondary
       start: 0
@@ -246,20 +242,16 @@ snapshots:
       style: secondary
       start: 34
       end: 45
+    - source: get
+      style: secondary
+      start: 36
+      end: 39
   'Object.defineProperty(foo, ''bar'', { get: () => {}});':
     labels:
     - source: 'get: () => {}'
       style: primary
       start: 36
       end: 49
-    - source: () => {}
-      style: secondary
-      start: 41
-      end: 49
-    - source: get
-      style: secondary
-      start: 36
-      end: 39
     - source: 'Object.defineProperty(foo, ''bar'', { get: () => {}})'
       style: secondary
       start: 0
@@ -268,20 +260,20 @@ snapshots:
       style: secondary
       start: 34
       end: 50
+    - source: get
+      style: secondary
+      start: 36
+      end: 39
+    - source: () => {}
+      style: secondary
+      start: 41
+      end: 49
   'Object.defineProperty(foo, ''bar'', { get: function (){}});':
     labels:
     - source: 'get: function (){}'
       style: primary
       start: 36
       end: 54
-    - source: function (){}
-      style: secondary
-      start: 41
-      end: 54
-    - source: get
-      style: secondary
-      start: 36
-      end: 39
     - source: 'Object.defineProperty(foo, ''bar'', { get: function (){}})'
       style: secondary
       start: 0
@@ -290,20 +282,20 @@ snapshots:
       style: secondary
       start: 34
       end: 55
+    - source: get
+      style: secondary
+      start: 36
+      end: 39
+    - source: function (){}
+      style: secondary
+      start: 41
+      end: 54
   'Object.defineProperty(foo, ''bar'', { get: function getfoo (){}});':
     labels:
     - source: 'get: function getfoo (){}'
       style: primary
       start: 36
       end: 61
-    - source: function getfoo (){}
-      style: secondary
-      start: 41
-      end: 61
-    - source: get
-      style: secondary
-      start: 36
-      end: 39
     - source: 'Object.defineProperty(foo, ''bar'', { get: function getfoo (){}})'
       style: secondary
       start: 0
@@ -312,20 +304,20 @@ snapshots:
       style: secondary
       start: 34
       end: 62
+    - source: get
+      style: secondary
+      start: 36
+      end: 39
+    - source: function getfoo (){}
+      style: secondary
+      start: 41
+      end: 61
   'Object?.defineProperty(foo, ''bar'', { get: function (){} });':
     labels:
     - source: 'get: function (){}'
       style: primary
       start: 37
       end: 55
-    - source: function (){}
-      style: secondary
-      start: 42
-      end: 55
-    - source: get
-      style: secondary
-      start: 37
-      end: 40
     - source: 'Object?.defineProperty(foo, ''bar'', { get: function (){} })'
       style: secondary
       start: 0
@@ -334,20 +326,20 @@ snapshots:
       style: secondary
       start: 35
       end: 57
+    - source: get
+      style: secondary
+      start: 37
+      end: 40
+    - source: function (){}
+      style: secondary
+      start: 42
+      end: 55
   'Reflect.defineProperty(foo, "bar", { get: function (){}});':
     labels:
     - source: 'get: function (){}'
       style: primary
       start: 37
       end: 55
-    - source: function (){}
-      style: secondary
-      start: 42
-      end: 55
-    - source: get
-      style: secondary
-      start: 37
-      end: 40
     - source: 'Reflect.defineProperty(foo, "bar", { get: function (){}})'
       style: secondary
       start: 0
@@ -356,20 +348,20 @@ snapshots:
       style: secondary
       start: 35
       end: 56
+    - source: get
+      style: secondary
+      start: 37
+      end: 40
+    - source: function (){}
+      style: secondary
+      start: 42
+      end: 55
   'Reflect.defineProperty(foo, ''bar'', { get: function (){}});':
     labels:
     - source: 'get: function (){}'
       style: primary
       start: 37
       end: 55
-    - source: function (){}
-      style: secondary
-      start: 42
-      end: 55
-    - source: get
-      style: secondary
-      start: 37
-      end: 40
     - source: 'Reflect.defineProperty(foo, ''bar'', { get: function (){}})'
       style: secondary
       start: 0
@@ -378,6 +370,14 @@ snapshots:
       style: secondary
       start: 35
       end: 56
+    - source: get
+      style: secondary
+      start: 37
+      end: 40
+    - source: function (){}
+      style: secondary
+      start: 42
+      end: 55
   class foo { get bar(){ if (baz) { return true; }}}:
     labels:
     - source: get bar(){ if (baz) { return true; }}

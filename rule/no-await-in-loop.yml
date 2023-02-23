@@ -19,7 +19,6 @@ rule:
           - kind: do_statement
     - not:
         inside:
-          stopBy: neighbor
           any:
             - kind: for_in_statement
             - kind: for_statement

@@ -12,7 +12,6 @@ rule:
             kind: statement_block
         kind: method_definition
         has:
-          stopBy: neighbor
           kind: property_identifier
           regex: constructor
     - pattern: return $A
@@ -23,7 +22,6 @@ rule:
             - kind: arrow_function
             - kind: function
         has:
-          stopBy: neighbor
           kind: property_identifier
           regex: constructor
 note: |

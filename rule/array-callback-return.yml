@@ -11,6 +11,7 @@ rule:
     - pattern: $FUNC
     - not:
         has:
+          stopBy: end
           pattern: return $C
     - not:
         all:
@@ -18,6 +19,7 @@ rule:
           - not:
               pattern: $$$ => { $$$ }
     - inside:
+        stopBy: end
         any:
           - pattern: Array.from($, $FUNC)
           - pattern: $A.$METHOD($FUNC)
