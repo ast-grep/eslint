@@ -110,6 +110,7 @@ utils:
             field: left
             stopBy: neighbor
             matches: constantTrue
+      # right shortcircuit only in is-constant-boolean
       - all:
         - has:
             field: operator

@@ -82,7 +82,15 @@ rule:
           has:
             stopBy: neighbor
             matches: is-constant-boolean
-
+    - kind: template_string
+      not:
+        has:
+          stopBy: neighbor
+          kind: template_substitution
+          has:
+            stopBy: neighbor
+            not:
+              matches: is-constant
 utils:
   isLogicalIdentity:
     any:
@@ -136,6 +144,3 @@ utils:
           any:
             - pattern: '""'
             - pattern: "''"
-      - kind: template_string #TODO
-        not:
-          regex: '`\$\{.+?\}`'
