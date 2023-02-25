@@ -1,0 +1,408 @@
+id: no-dupe-class-members
+snapshots:
+  '!class A { foo() {} foo() {} };':
+    labels:
+    - source: foo
+      style: primary
+      start: 11
+      end: 14
+    - source: foo
+      style: secondary
+      start: 20
+      end: 23
+    - source: foo() {}
+      style: secondary
+      start: 20
+      end: 28
+    - source: foo() {}
+      style: secondary
+      start: 11
+      end: 19
+  class A { 'foo'() {} 'foo'() {} }:
+    labels:
+    - source: '''foo'''
+      style: primary
+      start: 10
+      end: 15
+    - source: foo
+      style: secondary
+      start: 22
+      end: 25
+    - source: '''foo'''
+      style: secondary
+      start: 21
+      end: 26
+    - source: '''foo''() {}'
+      style: secondary
+      start: 21
+      end: 31
+    - source: '''foo''() {}'
+      style: secondary
+      start: 10
+      end: 20
+    - source: foo
+      style: secondary
+      start: 11
+      end: 14
+  class A { ['constructor']() {} ['constructor']() {} }:
+    labels:
+    - source: '[''constructor'']'
+      style: primary
+      start: 10
+      end: 25
+    - source: constructor
+      style: secondary
+      start: 33
+      end: 44
+    - source: '''constructor'''
+      style: secondary
+      start: 32
+      end: 45
+    - source: '[''constructor'']'
+      style: secondary
+      start: 31
+      end: 46
+    - source: '[''constructor'']() {}'
+      style: secondary
+      start: 31
+      end: 51
+    - source: '[''constructor'']() {}'
+      style: secondary
+      start: 10
+      end: 30
+    - source: constructor
+      style: secondary
+      start: 12
+      end: 23
+    - source: '''constructor'''
+      style: secondary
+      start: 11
+      end: 24
+  class A { ['foo']() {} ['foo']() {} }:
+    labels:
+    - source: '[''foo'']'
+      style: primary
+      start: 10
+      end: 17
+    - source: foo
+      style: secondary
+      start: 25
+      end: 28
+    - source: '''foo'''
+      style: secondary
+      start: 24
+      end: 29
+    - source: '[''foo'']'
+      style: secondary
+      start: 23
+      end: 30
+    - source: '[''foo'']() {}'
+      style: secondary
+      start: 23
+      end: 35
+    - source: '[''foo'']() {}'
+      style: secondary
+      start: 10
+      end: 22
+    - source: foo
+      style: secondary
+      start: 12
+      end: 15
+    - source: '''foo'''
+      style: secondary
+      start: 11
+      end: 16
+  class A { [123]() {} [123]() {} }:
+    labels:
+    - source: '[123]'
+      style: primary
+      start: 10
+      end: 15
+    - source: '123'
+      style: secondary
+      start: 22
+      end: 25
+    - source: '[123]'
+      style: secondary
+      start: 21
+      end: 26
+    - source: '[123]() {}'
+      style: secondary
+      start: 21
+      end: 31
+    - source: '[123]() {}'
+      style: secondary
+      start: 10
+      end: 20
+    - source: '123'
+      style: secondary
+      start: 11
+      end: 14
+  class A { foo() {} foo() {} foo() {} }:
+    labels:
+    - source: foo
+      style: primary
+      start: 10
+      end: 13
+    - source: foo
+      style: secondary
+      start: 19
+      end: 22
+    - source: foo() {}
+      style: secondary
+      start: 19
+      end: 27
+    - source: foo() {}
+      style: secondary
+      start: 10
+      end: 18
+  class A { foo() {} foo() {} }:
+    labels:
+    - source: foo
+      style: primary
+      start: 10
+      end: 13
+    - source: foo
+      style: secondary
+      start: 19
+      end: 22
+    - source: foo() {}
+      style: secondary
+      start: 19
+      end: 27
+    - source: foo() {}
+      style: secondary
+      start: 10
+      end: 18
+  class A { foo() {} get foo() {} }:
+    labels:
+    - source: foo
+      style: primary
+      start: 10
+      end: 13
+    - source: get
+      style: secondary
+      start: 19
+      end: 22
+    - source: foo
+      style: secondary
+      start: 23
+      end: 26
+    - source: get foo() {}
+      style: secondary
+      start: 19
+      end: 31
+    - source: foo() {}
+      style: secondary
+      start: 10
+      end: 18
+  class A { foo; foo; }:
+    labels:
+    - source: foo
+      style: primary
+      start: 10
+      end: 13
+    - source: foo
+      style: secondary
+      start: 15
+      end: 18
+    - source: foo
+      style: secondary
+      start: 15
+      end: 18
+    - source: foo
+      style: secondary
+      start: 10
+      end: 13
+  class A { get ['foo']() {} 'foo'() {} }:
+    labels:
+    - source: '''foo'''
+      style: primary
+      start: 27
+      end: 32
+    - source: get
+      style: secondary
+      start: 10
+      end: 13
+    - source: foo
+      style: secondary
+      start: 16
+      end: 19
+    - source: '''foo'''
+      style: secondary
+      start: 15
+      end: 20
+    - source: '[''foo'']'
+      style: secondary
+      start: 14
+      end: 21
+    - source: get ['foo']() {}
+      style: secondary
+      start: 10
+      end: 26
+    - source: '''foo''() {}'
+      style: secondary
+      start: 27
+      end: 37
+    - source: foo
+      style: secondary
+      start: 28
+      end: 31
+  class A { set 'foo'(value) {} set ['foo'](val) {} }:
+    labels:
+    - source: '[''foo'']'
+      style: primary
+      start: 34
+      end: 41
+    - source: set
+      style: secondary
+      start: 30
+      end: 33
+    - source: foo
+      style: secondary
+      start: 36
+      end: 39
+    - source: '''foo'''
+      style: secondary
+      start: 35
+      end: 40
+    - source: set
+      style: secondary
+      start: 10
+      end: 13
+    - source: foo
+      style: secondary
+      start: 15
+      end: 18
+    - source: '''foo'''
+      style: secondary
+      start: 14
+      end: 19
+    - source: set 'foo'(value) {}
+      style: secondary
+      start: 10
+      end: 29
+    - source: set ['foo'](val) {}
+      style: secondary
+      start: 30
+      end: 49
+  class A { set foo(value) {} foo() {} }:
+    labels:
+    - source: foo
+      style: primary
+      start: 28
+      end: 31
+    - source: set
+      style: secondary
+      start: 10
+      end: 13
+    - source: foo
+      style: secondary
+      start: 14
+      end: 17
+    - source: set foo(value) {}
+      style: secondary
+      start: 10
+      end: 27
+    - source: foo() {}
+      style: secondary
+      start: 28
+      end: 36
+  class A { static 'foo'() {} static ['foo']() {} }:
+    labels:
+    - source: '[''foo'']'
+      style: primary
+      start: 35
+      end: 42
+    - source: foo
+      style: secondary
+      start: 18
+      end: 21
+    - source: '''foo'''
+      style: secondary
+      start: 17
+      end: 22
+    - source: static 'foo'() {}
+      style: secondary
+      start: 10
+      end: 27
+    - source: static ['foo']() {}
+      style: secondary
+      start: 28
+      end: 47
+    - source: foo
+      style: secondary
+      start: 37
+      end: 40
+    - source: '''foo'''
+      style: secondary
+      start: 36
+      end: 41
+  class A { static foo() {} static foo() {} }:
+    labels:
+    - source: foo
+      style: primary
+      start: 33
+      end: 36
+    - source: static
+      style: secondary
+      start: 26
+      end: 32
+    - source: static
+      style: secondary
+      start: 10
+      end: 16
+    - source: foo
+      style: secondary
+      start: 17
+      end: 20
+    - source: static foo() {}
+      style: secondary
+      start: 10
+      end: 25
+    - source: static foo() {}
+      style: secondary
+      start: 26
+      end: 41
+  class A { static get ['foo']() {} static get ['foo']() {} }:
+    labels:
+    - source: '[''foo'']'
+      style: primary
+      start: 45
+      end: 52
+    - source: get
+      style: secondary
+      start: 41
+      end: 44
+    - source: foo
+      style: secondary
+      start: 47
+      end: 50
+    - source: '''foo'''
+      style: secondary
+      start: 46
+      end: 51
+    - source: get
+      style: secondary
+      start: 17
+      end: 20
+    - source: foo
+      style: secondary
+      start: 23
+      end: 26
+    - source: '''foo'''
+      style: secondary
+      start: 22
+      end: 27
+    - source: '[''foo'']'
+      style: secondary
+      start: 21
+      end: 28
+    - source: static get ['foo']() {}
+      style: secondary
+      start: 10
+      end: 33
+    - source: static get ['foo']() {}
+      style: secondary
+      start: 34
+      end: 57

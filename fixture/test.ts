@@ -64,3 +64,8 @@ function bar<T>(thing?: T): T {
   throw new Error("Function not implemented.");
 }
 
+
+class A {
+  foo() {}
+  static foo(value) {}
+}
