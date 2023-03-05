@@ -1,5 +1,5 @@
 ruleDirs:
-  - rule
+  - rules
 utilDirs:
   - utils
 testConfigs:
