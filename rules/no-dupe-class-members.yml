@@ -9,7 +9,7 @@ rule:
         - inside:
             field: name
             matches: is-class-members
-            follows:
+            precedes:
               stopBy: end
               all:
                 - matches: is-class-members

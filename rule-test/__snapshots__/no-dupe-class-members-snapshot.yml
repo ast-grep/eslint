@@ -250,10 +250,18 @@ snapshots:
       end: 31
   class A { set 'foo'(value) {} set ['foo'](val) {} }:
     labels:
-    - source: '[''foo'']'
+    - source: '''foo'''
       style: primary
-      start: 34
-      end: 41
+      start: 14
+      end: 19
+    - source: set
+      style: secondary
+      start: 10
+      end: 13
+    - source: foo
+      style: secondary
+      start: 15
+      end: 18
     - source: set
       style: secondary
       start: 30
@@ -266,26 +274,18 @@ snapshots:
       style: secondary
       start: 35
       end: 40
-    - source: set
+    - source: '[''foo'']'
       style: secondary
-      start: 10
-      end: 13
-    - source: foo
-      style: secondary
-      start: 15
-      end: 18
-    - source: '''foo'''
-      style: secondary
-      start: 14
-      end: 19
-    - source: set 'foo'(value) {}
-      style: secondary
-      start: 10
-      end: 29
+      start: 34
+      end: 41
     - source: set ['foo'](val) {}
       style: secondary
       start: 30
       end: 49
+    - source: set 'foo'(value) {}
+      style: secondary
+      start: 10
+      end: 29
   class A { set foo(value) {} foo() {} }:
     labels:
     - source: foo
@@ -342,46 +342,34 @@ snapshots:
     labels:
     - source: foo
       style: primary
-      start: 33
-      end: 36
-    - source: static
-      style: secondary
-      start: 26
-      end: 32
+      start: 17
+      end: 20
     - source: static
       style: secondary
       start: 10
       end: 16
+    - source: static
+      style: secondary
+      start: 26
+      end: 32
     - source: foo
       style: secondary
-      start: 17
-      end: 20
-    - source: static foo() {}
-      style: secondary
-      start: 10
-      end: 25
+      start: 33
+      end: 36
     - source: static foo() {}
       style: secondary
       start: 26
       end: 41
+    - source: static foo() {}
+      style: secondary
+      start: 10
+      end: 25
   class A { static get ['foo']() {} static get ['foo']() {} }:
     labels:
     - source: '[''foo'']'
       style: primary
-      start: 45
-      end: 52
-    - source: get
-      style: secondary
-      start: 41
-      end: 44
-    - source: foo
-      style: secondary
-      start: 47
-      end: 50
-    - source: '''foo'''
-      style: secondary
-      start: 46
-      end: 51
+      start: 21
+      end: 28
     - source: get
       style: secondary
       start: 17
@@ -394,15 +382,27 @@ snapshots:
       style: secondary
       start: 22
       end: 27
+    - source: get
+      style: secondary
+      start: 41
+      end: 44
+    - source: foo
+      style: secondary
+      start: 47
+      end: 50
+    - source: '''foo'''
+      style: secondary
+      start: 46
+      end: 51
     - source: '[''foo'']'
       style: secondary
-      start: 21
-      end: 28
-    - source: static get ['foo']() {}
-      style: secondary
-      start: 10
-      end: 33
+      start: 45
+      end: 52
     - source: static get ['foo']() {}
       style: secondary
       start: 34
       end: 57
+    - source: static get ['foo']() {}
+      style: secondary
+      start: 10
+      end: 33

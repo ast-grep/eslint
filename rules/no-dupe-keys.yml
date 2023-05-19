@@ -13,7 +13,7 @@ rule:
               follows:
                 pattern: $$ACCESS
         - matches: pair-key
-      follows:
+      precedes:
         stopBy: end
         any:
           - matches: method-key
