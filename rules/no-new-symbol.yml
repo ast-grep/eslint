@@ -1,0 +1,6 @@
+id: no-new-symbol
+message: Symbol cannot be called as a constructor.
+severity: error
+language: TypeScript
+rule:
+  pattern: new Symbol($$$)

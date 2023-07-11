@@ -1,0 +1,14 @@
+id: no-new-symbol
+snapshots:
+  const sym = new Symbol('sym'):
+    labels:
+    - source: new Symbol('sym')
+      style: primary
+      start: 12
+      end: 29
+  const sym = new Symbol():
+    labels:
+    - source: new Symbol()
+      style: primary
+      start: 12
+      end: 24

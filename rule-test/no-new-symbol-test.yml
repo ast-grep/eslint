@@ -1,0 +1,9 @@
+id: no-new-symbol
+valid:
+  - "const sym = Symbol('sym')"
+  - 'const sym = Symbol()'
+  - "'new Symbol()'"
+  - '// new Symbol()'
+invalid:
+  - "const sym = new Symbol('sym')"
+  - 'const sym = new Symbol()'
