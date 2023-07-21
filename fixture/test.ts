@@ -69,3 +69,6 @@ class A {
   foo() {}
   static foo(value) {}
 }
+
+const sym = new Symbol();
+
