@@ -10,7 +10,7 @@ rule:
           any:
             - kind: function_declaration
             - kind: arrow_function
-            - kind: function
+            - kind: function_expression
             - kind: method_definition
         any:
           - kind: for_in_statement

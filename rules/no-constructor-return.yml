@@ -20,7 +20,7 @@ rule:
           any:
             - kind: function_declaration
             - kind: arrow_function
-            - kind: function
+            - kind: function_expression
         has:
           kind: property_identifier
           regex: constructor

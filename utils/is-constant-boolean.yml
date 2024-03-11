@@ -116,7 +116,7 @@ utils:
       - kind: 'true'
       - kind: regex
       - kind: arrow_function
-      - kind: function
+      - kind: function_expression
       - kind: object
       - kind: class
       - kind: array

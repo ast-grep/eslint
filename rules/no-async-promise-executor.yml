@@ -6,7 +6,7 @@ rule:
   all:
     - pattern: $A
     - any:
-        - kind: function
+        - kind: function_expression
         - kind: arrow_function
     - regex: ^async
     - inside:

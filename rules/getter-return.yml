@@ -12,13 +12,13 @@ rule:
           stopBy:
             any:
               - kind: if_statement
-              - kind: function
+              - kind: function_expression
     - any:
         - kind: pair
           has:
             all:
               - any:
-                  - kind: function
+                  - kind: function_expression
                   - kind: arrow_function
               - not:
                   has:
@@ -26,7 +26,7 @@ rule:
                     stopBy:
                       any:
                         - kind: if_statement
-                        - kind: function
+                        - kind: function_expression
         - kind: method_definition
           not:
             has:
@@ -34,7 +34,7 @@ rule:
               stopBy:
                 any:
                   - kind: if_statement
-                  - kind: function
+                  - kind: function_expression
       has:
         kind: property_identifier
         regex: ^get$
