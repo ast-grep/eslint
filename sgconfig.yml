@@ -4,3 +4,8 @@ utilDirs:
   - utils
 testConfigs:
   - testDir: rule-test
+customLanguages:
+  mmm:
+    libraryPath: json-mac.so
+    extensions: ["mmm"]
+    languageSymbol: tree_sitter_json
