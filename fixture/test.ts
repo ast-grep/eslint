@@ -72,3 +72,6 @@ class A {
 
 const sym = new Symbol();
 
+class NoComponent {
+  ngOnInit() {}
+}
