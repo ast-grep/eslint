@@ -6,3 +6,5 @@ rule:
   pattern: debugger
 note: |
   Production code should definitely not contain debugger, as it will cause the browser to stop executing code and open an appropriate debugger.
+
+url: https://eslint.org/docs/rules/no-debugger

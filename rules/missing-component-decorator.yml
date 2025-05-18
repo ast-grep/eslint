@@ -1,0 +1,26 @@
+id: missing-component-decorator
+message: You're using an Angular lifecycle method, but missing an Angular @Component() decorator.
+language: TypeScript
+severity: warning
+rule:
+  pattern:
+    context: 'class Hi { $METHOD() { $$$_} }'
+    selector: method_definition
+  inside:
+    pattern: 'class $KLASS $$$_ { $$$_ }'
+    stopBy: end
+    not:
+      has:
+        pattern: '@Component($$$_)'
+constraints:
+  METHOD:
+    regex: ngOnInit|ngOnDestroy
+labels:
+  KLASS:
+    style: primary
+    message: "This class is missing the decorator."
+  METHOD:
+    style: secondary
+    message: "This is an Angular lifecycle method."
+metadata:
+  contributedBy: samwightt
