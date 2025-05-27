@@ -8,8 +8,9 @@ async function foo(things) {
   }
   return bar(results);
 }
+let abcd, str
 
-if (a = typeof str) {
+if (abcd = typeof str) {
   console.log('123')
 }
 
@@ -72,6 +73,18 @@ class A {
 
 const sym = new Symbol();
 
-class NoComponent {
-  ngOnInit() {}
+
+
+
+declare var Input: any;
+
+
+
+
+class NotComponent {
+
+  @Input() test: string;
+
+  ngOnInit() {
+  }
 }

@@ -24,3 +24,7 @@ labels:
     message: "This is an Angular lifecycle method."
 metadata:
   contributedBy: samwightt
+note: |
+  This rule checks for Angular lifecycle methods like `ngOnInit` or `ngOnDestroy` in classes that do not have the `@Component()` decorator. It helps ensure that Angular components are properly defined.
+  If you encounter this warning, consider adding the `@Component()` decorator to the class to ensure it is recognized as an Angular component.
+  If the class is not intended to be an Angular component, you may want to rename the lifecycle methods to avoid confusion.
