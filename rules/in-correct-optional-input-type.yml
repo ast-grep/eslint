@@ -3,7 +3,6 @@ language: TypeScript
 message: This input is optional, but the type for it does not include undefined.
 severity: error
 note: |
-  # Note
   Component inputs specified using the `@Input` decorator are optional by default.
   If they are not passed a value when used, they are passed `undefined`. To make them
   required, you set `@Input({ required: true })`.
@@ -17,30 +16,48 @@ note: |
   * Add a default value to the input.
   * Make the input required.
   * Use the input signals API.
+
 rule:
-  any:
-    - pattern: '@Input()'
-    - pattern: '@Input($$$_)'
+  kind: public_field_definition
+  pattern: $FIELD
   not:
     has:
-      kind: pair
-      all:
-        - has:
-            field: key
-            regex: required
-        - has:
-            kind: 'true'
-      stopBy: end
-  inside:
-    kind: public_field_definition
-    all:
-      - not:
+      field: value
+      pattern: '$_'
+  all:
+    - has:
+        kind: type_annotation
+        not:
           has:
-            field: value
-            pattern: '$_'
-      - has:
-          kind: type_annotation
-          not:
-            has:
-              kind: 'undefined'
-              stopBy: end
+            kind: 'undefined'
+            stopBy: end
+  has:
+    any:
+      - pattern: '@Input()'
+      - pattern: '@Input($$$_)'
+    not:
+      has:
+        kind: pair
+        all:
+          - has:
+              field: key
+              regex: required
+          - has:
+              kind: 'true'
+        stopBy: end
+rewriters:
+- id: add-required
+  rule:
+    pattern:
+      context: 'class A { @Input() f }'
+      selector: decorator
+  fix: '@Input({ required: true })'
+transform:
+  NEW_FIELD: rewrite($FIELD, rewriters=[add-required])
+fix:
+  - title: add undefined to type
+    template: $FIELD | undefined
+  - title: add default value
+    template: $FIELD = <VALUE>
+  - title: make input required
+    template: $NEW_FIELD
